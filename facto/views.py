@@ -7,10 +7,11 @@ from facto.models import Country, Fact, Person, Category
 def home(request):
     # Summaries
     n = 4
+    facts_n = 3
 
     countries = Country.objects.all()[:n]
     people = Person.objects.all()[:n]
-    recent_facts = Fact.recent_facts(n)
+    recent_facts = Fact.recent_facts(facts_n)
     categories = Category.objects.all()[:n]
 
     return render_to_response('home.html', locals(), context_instance=RequestContext(request))
