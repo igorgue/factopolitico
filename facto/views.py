@@ -6,7 +6,7 @@ from facto.models import Country, Fact, Person, Category
 
 def home(request):
     # Summaries
-    n = 10
+    n = 4
 
     countries = Country.objects.all()[:n]
     people = Person.objects.all()[:n]
