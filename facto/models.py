@@ -4,7 +4,7 @@ from django.db import models
 class Country(models.Model):
     name = models.CharField(max_length=255, blank=False)
     #picture = models.ImageField(upload_to='public/images/upload', height_field=80, width_field=80)#, max_length=100)
-    picture_url = models.URLField(max_length=200, blank=True)
+    picture_url = models.URLField(max_length=255, blank=True)
 
     slug = models.SlugField(max_length=255, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False, blank=False, null=False)
@@ -23,7 +23,7 @@ class Person(models.Model):
     name = models.CharField(max_length=255, blank=False)
     title = models.CharField(max_length=255, blank=False)
     #profile_pic = models.ImageField(upload_to='public/images/upload', height_field=80, width_field=80)#, max_length=100)
-    profile_pic_url = models.URLField(max_length=200, blank=True)
+    profile_pic_url = models.URLField(max_length=255, blank=True)
 
     country = models.ForeignKey(Country, related_name='country')
 
@@ -60,6 +60,7 @@ class Fact(models.Model):
 
     title = models.CharField(max_length=255, blank=False)
     quote = models.TextField(blank=False)
+    image_url = models.URLField(max_length=255, blank=True)
     video = models.TextField(blank=True) # embed code
     content = models.TextField(blank=False)
     status = models.CharField(max_length=255, choices=STATUS, blank=True, default=STATUS[0][0])
