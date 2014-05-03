@@ -1,34 +1,9 @@
+from django.conf import settings
 from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
 
 from django.contrib import admin
 admin.autodiscover()
-
-#Home page
-	#- Countries
-	#- People
-	#- Most Recent Facts
-	#- Categories
-
-#Country Page
-	#- Video background of current event
-	#- People
-	#- Most recent fact
-	#- List of facts / paginated
-
-#Person Page
-	#- Name
-	#- Title
-	#- Truth o meter
-	#- Picture
-	#- Country
-	#- Most active categories
-
-#Fact page
-	#- Person
-	#- Quote
-	#- Truth
-	#- Assessment
-	#- Sources
 
 urlpatterns = patterns('',
     url(r'^$', 'facto.views.home', name='home'),
@@ -47,4 +22,4 @@ urlpatterns = patterns('',
     url(r'^categories/(?P<slug>\w+)/$', 'facto.views.get_category', name='get_category'),
 
     url(r'^admin/', include(admin.site.urls)),
-)
+) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

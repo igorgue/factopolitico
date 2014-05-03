@@ -72,6 +72,10 @@ class Fact(models.Model):
     def __unicode__(self):
         return self.title
 
+    @classmethod
+    def recent_facts(cls, number=5):
+        return cls.objects.all().order_by('-created_at')[:number]
+
 class Source(models.Model):
     url = models.URLField(max_length=255, blank=False)
     title = models.CharField(max_length=255, blank=False)
