@@ -62,15 +62,17 @@ def get_people(request, slug):
     return render_to_response('home.html', locals(), context_instance=RequestContext(request))
 
 def get_fact(request, people_slug, fact_slug):
-    person = get_object_or_404(Person, slug=people_slug)
-    fact = get_object_or_404(Fact, slug=fact_slug, person=person)
+    fact = get_object_or_404(Fact, slug=fact_slug, person__slug=people_slug)
     return render_to_response('home.html', locals(), context_instance=RequestContext(request))
 
 def recent_facts(request):
-    return render_to_response('home.html', {}, context_instance=RequestContext(request))
+    recent_facts_by_date = Fact.objects.all().order_by('-created_at')[:10]
+    return render_to_response('home.html', locals(), context_instance=RequestContext(request))
 
 def categories(request):
-    return render_to_response('home.html', {}, context_instance=RequestContext(request))
+    categories = Category.all()
+    return render_to_response('home.html', locals(), context_instance=RequestContext(request))
 
 def get_category(request, slug):
-    return render_to_response('home.html', {}, context_instance=RequestContext(request))
+    category = get_object_or_404(Category, slug=slug)
+    return render_to_response('home.html', locals(), context_instance=RequestContext(request))
