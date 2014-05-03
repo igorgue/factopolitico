@@ -13,6 +13,9 @@ class Country(models.Model):
     def facts_by_country(self):
         return Fact.objects.filter(person__country=self)
 
+    def persons(self):
+        return People.objects.filter(country=self)
+
     def __unicode__(self):
         return self.name
 
@@ -42,10 +45,21 @@ class Category(models.Model):
         return self.title
 
 class Fact(models.Model):
+    STATUS = (
+        ('investigating', 'Investigating'),
+        ('almost-true', 'Almost True'),
+        ('true', 'True'),
+        ('half-true', 'Half True'),
+        ('false', 'False'),
+        ('mostly-false', 'Mostly False'),
+        ('Pants On Fire', 'Pants On Fire'),
+    )
+
     title = models.CharField(max_length=255, blank=False)
     quote = models.TextField(blank=False)
     video = models.TextField(blank=True) # embed code
     content = models.TextField(blank=False)
+    status = models.CharField(max_length=255, choices=STATUS, blank=True, default=STATUS[0][0])
 
     user = models.ForeignKey(User)
     person = models.ForeignKey(Person, related_name='person')
