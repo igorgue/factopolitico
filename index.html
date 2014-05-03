@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+		<title>Jumbotron Template for Bootstrap</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Google web fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Oswald|Francois+One' rel='stylesheet' type='text/css'>
+
+		<!-- Custom styles for this template -->
+		<link href="jumbotron.css" rel="stylesheet">
+		<style type="text/css">
+			#or{
+				background-color:#fff; 
+				height: 40px; 
+				padding: 10px 0px 25px; 
+				position: relative; 
+				left: -17px; 
+				top: -350px;
+				text-align: center;
+			}
+
+			.francois{
+				font-family:'Francois One';
+			}
+
+			.oswald{
+				font-family: 'Oswald';
+			}
+
+			.country{
+				overflow: hidden;
+				width: 110px;
+				height: 110px;
+				border-radius: 55px; 
+				border: 1px solid #ccc; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+
+			.country:hover, .person:hover{
+				border: 1px solid #333; 
+			}
+
+			.country.mexico{
+				background-image: url(images/mexico.png);
+				background-position: -45px -2px;
+			}
+
+			.country.colombia{
+				background-image:url(images/colombia.png);
+				background-position: -45px -10px;
+			}
+
+			.country.argentina{
+				background-image:url(images/argentina.png);
+				background-position: -45px -10px; 
+			}
+
+			.country.peru{
+				background-image:url(images/peru.png);
+				background-position: -46px -10px;
+			}
+
+			.country.venezuela{
+				background-image:url(images/venezuela.png);
+				background-position: -45px -10px; 
+			}
+
+			.country.chile{
+				background-image:url(images/chile.png);
+				background-position: -25px -2px;
+			}
+
+			.country.ecuador{
+				background-image:url(images/ecuador.png);
+				background-position: -45px -10px;
+			}
+
+			.country.cuba{
+				background-image:url(images/cuba.png);
+				background-position: -25px 2px;
+			}
+
+			.country.bolivia{
+				background-image:url(images/bolivia.png);
+				background-position: -45px -10px;
+			}
+
+			.country.guatemala{
+				background-image:url(images/guatemala.png);
+				background-position: -45px -2px;
+			}
+
+			.person{
+				overflow:hidden;
+				width: 110px;
+				height:110px;
+				border-radius:55px; 
+				border: 1px solid #ccc; 
+				background-position: -25px -2px; 
+				background-size: 150px; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+
+			.person.mexico{
+				background-image:url(https://dl.dropboxusercontent.com/sh/dpspzisengzho6k/arHsLXGxKV/mexico-president-orders-probe-into-restaurant-ruckus-1367357441-5486.jpg?token_hash=AAFIv-4HUEHRs9nR5J1X9Gd-JHNRWZhnfcv_VPaTu2e8Ng);
+			}
+		</style>
+
+		<!-- Just for debugging purposes. Don't actually copy this line! -->
+		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body style="padding-top: 50px;">
+
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Facto Politico</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron" style="background-color:#FF3030;color: #fff;font-family: 'Oswald';">
+			<div class="container">
+				<h1>La verdad sobre politica latinoamericano.</h1>
+				<p>Nosotros buscamos a verificar los hechos de politicos en América Latina.</p>
+			</div>
+		</div>
+
+		<div class="container">
+			<!-- Example row of columns -->
+			<div class="row">
+				<div class="col-md-5 text-center">
+					<br/>
+					<h2 class="oswald">Verdad desde país</h2>
+					<hr style="border-top-color:#ddd !important;"/>
+					<div class="row francois">
+						<div class="col-md-6">
+							<div class="country mexico"></div>
+							<p><small>Mexico</small></p>
+						</div>
+						<div class="col-md-6 text-center">
+							<div class="country colombia"></div>
+							<p><small>Colombia</small></p>
+						</div>
+						<div class="col-md-6 text-center">
+							<div class="country argentina"></div>
+							<p><small>Argentina</small></p>
+						</div>
+						<div class="col-md-6 text-center">
+							<div class="country peru"></div>
+							<p><small>Peru</small></p>
+						</div>
+
+						<div class="col-md-12 text-center">
+							<br/>
+							<a href="#" class="btn btn-default form-control">Ver todo los paises</a>
+						</div>
+
+						<div id="more-countries" style="display:none;">
+							<div class="col-md-6 text-center">
+								<div class="country venezuela"></div>
+								<p><small>Venezuela</small></p>
+							</div>
+							<div class="col-md-6 text-center">
+								<div class="country chile"></div>
+								<p><small>Chile</small></p>
+							</div>
+							<div class="col-md-6 text-center">
+								<div class="country ecuador"></div>
+								<p><small>Ecuador</small></p>
+							</div>
+							<div class="col-md-6 text-center">
+								<div class="country guatemala"></div>
+								<p><small>Guatemala</small></p>
+							</div>
+							<div class="col-md-6 text-center">
+								<div class="country cuba"></div>
+								<p><small>Cuba</small></p>
+							</div>
+							<div class="col-md-6 text-center">
+								<div class="country bolivia"></div>
+								<p><small>Bolivia</small></p>
+							</div>
+						</div> <!-- end of #more-countries -->
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="row">
+						<div class="col-md-4">
+						</div>
+						<div class="col-md-4">
+							<div style="border-left:1px solid #ddd; height: 450px;"></div>
+							<div id="or">OR</div>
+						</div>
+						<div class="col-md-4">
+						</div>
+					</div>
+			 	</div>
+			 	<div class="col-md-5 text-center" id="people">
+					<br/>
+					<h2 class="oswald">Verdad desde politico</h2>
+					<hr style="border-top-color:#ddd !important;"/>
+					<div class="row francois">
+						<div class="col-md-6 text-center">
+							<div class="person mexico"></div>
+							<p><small>Enrique Peña Nieto</small></p>
+						</div>
+						<div class="col-md-6 text-center">
+							<div class="person mexico"></div>
+							<p><small>Enrique Peña Nieto</small></p>
+						</div>
+						<div class="col-md-6 text-center">
+							<div class="person mexico"></div>
+							<p><small>Enrique Peña Nieto</small></p>
+						</div>
+						<div class="col-md-6 text-center">
+							<div class="person mexico"></div>
+							<p><small>Enrique Peña Nieto</small></p>
+						</div>
+
+						<div class="col-md-12 text-center">
+							<br/>
+							<a href="#" class="btn btn-default form-control">Ver todo los personas</a>
+						</div>
+					</div>
+			 	</div>
+			</div> <!-- end of .row -->
+
+			<hr>
+
+
+			<div class="row">
+				<div class="col-md-8">
+					<h2 class="oswald">Hechos mas reciente</h2>
+					<hr/>
+					<ul class="media-list">
+					  <li class="media">
+					    <a class="pull-left" href="#">
+					      <img class="media-object" src="http://news.bbcimg.co.uk/media/images/74544000/jpg/_74544165_3778269e-bf30-4b52-92af-9237a0bdd9f3.jpg" alt="..." height="100" style="width:100px">
+					    </a>
+					    <div class="media-body">
+					      <h4 class="media-heading">
+					      	<img src="images/venezuela.png" height="15"/>
+					      	Maduro va hacer cosas con dinero
+					      </h4>
+					      "by the end of the year, we will be choking off and overcoming (...) inflation"
+					      <br/>
+					      <span class="label label-default">investigando</span>
+					    </div>
+					  </li>
+					  <li class="media">
+					    <a class="pull-left" href="#">
+					      <img class="media-object" src="http://thecubaneconomy.com/wp-content/uploads/2012/06/cuba-computer.jpg" alt="..." height="100" style="width:100px">
+					    </a>
+					    <div class="media-body">
+					      <h4 class="media-heading">
+					      	<img src="images/cuba.png" height="15"/>
+					      	Castro lifts ban on computers
+					      </h4>
+					      "los computadores son bueno"
+					      <br/>
+					      <span class="label label-success">verdad!</span>
+					    </div>
+					  </li>
+					  <li class="media">
+					    <a class="pull-left" href="#">
+					      <img class="media-object" src="https://external-mia.xx.fbcdn.net/safe_image.php?d=AQDpjEQHDIiHqnLk&w=116&h=116&url=http%3A%2F%2Fstatic4.businessinsider.com%2Fimage%2F535930206bb3f7565e632c09%2Fthe-22-most-miserable-countries-in-the-world.jpg&cfs=1&l" alt="..." height="100">
+					    </a>
+					    <div class="media-body">
+					      <h4 class="media-heading">
+					      	<img src="images/venezuela.png" height="15"/>
+					      	Maduro va matar personas
+					      </h4>
+					      "voy a matar personas innocentes"
+					      <br/>
+					      <span class="label label-success">verdad!</span>
+					    </div>
+					  </li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<h2 class="oswald">Hechos desde categoria</h3>
+					<hr/>
+					<ul class="list-group">
+					  <li class="list-group-item">
+					    <span class="badge">104</span>
+					    Economy
+					  </li>
+					  <li class="list-group-item">
+					    <span class="badge">1094</span>
+					    Drugs
+					  </li>
+					  <li class="list-group-item">
+					    <span class="badge">88</span>
+					    Elections
+					  </li>
+					  <li class="list-group-item">
+					    <span class="badge">2</span>
+					    Healthcare
+					  </li>
+					</ul>
+				</div>
+			</div><!-- ewhat? -->
+
+			<hr>
+
+			<footer>
+				<p>&copy; Company 2014</p>
+			</footer>
+		</div> <!-- /container -->
+
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="../../dist/js/bootstrap.min.js"></script>
+	</body>
+</html>
