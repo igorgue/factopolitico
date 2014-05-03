@@ -1,11 +1,26 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+
+from facto.models import Location
 
 def home(request):
     return render_to_response('home.html', {}, context_instance=RequestContext(request))
 
 def countries(request):
-    return render_to_response('home.html', {}, context_instance=RequestContext(request))
+    locations_list = Location.objects.all()
+    paginator = Paginator(locations_list, 25)
+
+    page = request.GET.get('page')
+
+    try:
+        locations = paginator.page(page)
+    except PageNotAnInteger:
+        locations = paginator.page(1)
+    except EmptyPage:
+        locations = paginator.page(paginator.num_pages)
+
+    return render_to_response('countries.html', {'countries': locations}, context_instance=RequestContext(request))
 
 def get_country(request, slug):
     return render_to_response('home.html', {}, context_instance=RequestContext(request))
