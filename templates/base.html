@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">
+		<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 		<!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
 
     <title>{% block title %}Facto Politico{% endblock %}</title>
@@ -140,9 +141,17 @@
 		</div>
 
 		<!-- Main jumbotron for a primary marketing message or call to action -->
-		<div class="jumbotron" style="background-color:#FF3030;color: #fff;font-family: 'Oswald';">
-			<div class="container">
-				<h1>La verdad sobre politica latinoamericano.</h1>
+		<div class="jumbotron" style="background-color:#FF3030;color: #fff;font-family: 'Oswald';position: relative; height: 205px; overflow: hidden;">
+			<div style="position:relative; left: -40px; top: -50px;">
+				<video autoplay="" muted="" loop="">
+					<source src="file://localhost/Users/austonbunsen/Sites/factopolitico/videos/venezuela.mp4" type="video/mp4">
+					<source src="https://s3.amazonaws.com/liveninja/katana/katanamontage1008.webm" type="video/webm">
+					Your browser does not support the video tag.
+				</video>
+			</div>
+			<div class="container" style="position:absolute; top: 0px;">
+				<br/>
+				<h1 style="text-shadow:0 0 3px rgba(0,0,0,.8);">La verdad sobre politica en <span id="country-swapper">América Latina</span>.</h1>
 				<p>Nosotros buscamos a verificar los hechos de politicos en América Latina.</p>
 			</div>
 		</div>
@@ -252,7 +261,7 @@
 
 			<div class="row">
 				<div class="col-md-8">
-					<h2 class="oswald">Hechos mas reciente</h2>
+					<h2 class="oswald">Hechos recientes</h2>
 					<hr/>
 					<ul class="media-list">
 					  <li class="media">
@@ -336,5 +345,28 @@
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
+		<script type="text/javascript">
+			var countries = ['Venezuela', 'Cuba', 'Peru', 'Colombia'];
+			var ll;
+			var cur_country;
+			function x(){
+				if (typeof cur_country == 'undefined' || cur_country == -1){
+					cur_country = countries[0];
+				}
+				else
+				{
+					xl = countries.indexOf(cur_country)+1;
+					cur_country = countries[xl];	
+				}
+				$('#country-swapper').text(cur_country);
+				if(cur_country == countries[countries.length-1]){
+					cur_country = -1;
+				}
+			}
+			$(document).ready(function(){
+				ll = setInterval(x, 2000);
+			});
+		</script>
 	</body>
 </html>
+
