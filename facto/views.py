@@ -2,7 +2,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 
-from facto.models import Country
+from facto.models import Country, Fact, Person, Category
 
 def home(request):
     return render_to_response('home.html', {}, context_instance=RequestContext(request))
@@ -76,3 +76,4 @@ def categories(request):
 def get_category(request, slug):
     category = get_object_or_404(Category, slug=slug)
     return render_to_response('get_category.html', locals(), context_instance=RequestContext(request))
+
