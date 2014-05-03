@@ -3,6 +3,8 @@ from django.db import models
 
 class Location(models.Model):
     name = models.CharField(max_length=255, blank=False)
+    #picture = models.ImageField(upload_to='public/images/upload', height_field=80, width_field=80)#, max_length=100)
+    picture_url = models.URLField(max_length=200, blank=True)
 
     slug = models.SlugField(max_length=255, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False, blank=False, null=False)
