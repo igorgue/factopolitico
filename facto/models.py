@@ -65,7 +65,7 @@ class Fact(models.Model):
     status = models.CharField(max_length=255, choices=STATUS, blank=True, default=STATUS[0][0])
     # ^^^ get_status_display to show name in templates
 
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, blank=True)
     person = models.ForeignKey(Person, related_name='person')
     category = models.ForeignKey(Category, related_name='category')
 
