@@ -66,7 +66,7 @@ def get_fact(request, people_slug, fact_slug):
     return render_to_response('get_fact.html', locals(), context_instance=RequestContext(request))
 
 def recent_facts(request):
-    recent_facts_by_date = Fact.objects.all().order_by('-created_at')[:10]
+    recent_facts_by_date = Fact.recent_facts()
     return render_to_response('recent_facts.html', locals(), context_instance=RequestContext(request))
 
 def categories(request):
