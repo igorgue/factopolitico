@@ -100,10 +100,6 @@
       background-repeat: no-repeat; 
       margin: 0 auto;
     }
-
-    .person.mexico{
-      background-image:url(https://dl.dropboxusercontent.com/sh/dpspzisengzho6k/arHsLXGxKV/mexico-president-orders-probe-into-restaurant-ruckus-1367357441-5486.jpg?token_hash=AAFIv-4HUEHRs9nR5J1X9Gd-JHNRWZhnfcv_VPaTu2e8Ng);
-    }
   </style>
 {% endblock %}
 
@@ -129,7 +125,7 @@
     <div class="row">
       <div class="col-md-5 text-center">
         <br/>
-        <h2 class="oswald">Verdad desde país</h2>
+        <h2 class="oswald">Verdad por país</h2>
         <hr style="border-top-color:#ddd !important;"/>
         <div class="row francois">
 
@@ -162,29 +158,22 @@
       </div>
       <div class="col-md-5 text-center" id="people">
         <br/>
-        <h2 class="oswald">Verdad desde politico</h2>
+        <h2 class="oswald">Verdad por politico</h2>
         <hr style="border-top-color:#ddd !important;"/>
         <div class="row francois">
-          <div class="col-md-6 text-center">
-            <div class="person mexico"></div>
-            <p><small>Enrique Peña Nieto</small></p>
-          </div>
-          <div class="col-md-6 text-center">
-            <div class="person mexico"></div>
-            <p><small>Enrique Peña Nieto</small></p>
-          </div>
-          <div class="col-md-6 text-center">
-            <div class="person mexico"></div>
-            <p><small>Enrique Peña Nieto</small></p>
-          </div>
-          <div class="col-md-6 text-center">
-            <div class="person mexico"></div>
-            <p><small>Enrique Peña Nieto</small></p>
-          </div>
+
+          {% for person in people %}
+            <a href="{% url "get_people" person.slug %}">
+              <div class="col-md-6 text-center">
+                <div class="person" style="background-image:url({{ person.profile_pic_url}})"></div>
+                <p><small>{{ person.name }}</small></p>
+              </div>
+            </a>
+          {% endfor %}
 
           <div class="col-md-12 text-center">
             <br/>
-            <a href="#" class="btn btn-default form-control">Ver todo los personas</a>
+            <a href="{% url "people" %}" class="btn btn-default form-control">Ver todos los politicos</a>
           </div>
         </div>
       </div>
@@ -243,7 +232,7 @@
         </ul>
       </div>
       <div class="col-md-4">
-        <h2 class="oswald">Hechos desde categoria</h3>
+        <h2 class="oswald">Hechos por categoria</h3>
         <hr/>
         <ul class="list-group">
           <li class="list-group-item">
