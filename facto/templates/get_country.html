@@ -1,5 +1,146 @@
 {% extends "base.html" %}
 {% block title %}{{ country.name }}{% endblock %}
 {% block content %}
-  <h1 id="heading">{{ country.name }}</h1>
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<div class="jumbotron" style="background-color:#FF3030;color: #fff;font-family: 'Oswald';position: relative; height: 325px; overflow: hidden;">
+		<div style="position:relative; left: -40px; top: -50px;">
+			<video autoplay="" muted="" loop="">
+				<source src="file://localhost/Users/austonbunsen/Sites/factopolitico/videos/venezuela.mp4" type="video/mp4">
+				<source src="https://s3.amazonaws.com/liveninja/katana/katanamontage1008.webm" type="video/webm">
+				Your browser does not support the video tag.
+			</video>
+		</div>
+		<div class="container text-center" style="position:absolute; top: 0px;">
+			<br/>
+			<br/>
+			<img src="images/venezuela.png" />
+			<h1 style="text-shadow:0 0 3px rgba(0,0,0,.8);">La verdad sobre politica en Venezuela.</h1>
+		</div>
+	</div>
+
+	<div class="container">
+		<!-- Example row of columns -->
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="oswald">Hecho mas reciente</h2>
+				<hr style="border-top-color:#ddd !important;"/>
+				<div style="border-left: 5px solid #ccc; background-color: #efefef; padding: 20px 20px 5px 20px; margin: 20px 0;">
+					<blockquote>
+					  <p>
+					  	<span class="label label-success">Verdad!</span>
+					  	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+					  </p>
+					  <footer>
+					  	Nicolas Maduro en <cite title="Source Title">Source Title</cite> ( <a href="#">Ver mas</a> )
+					  </footer>
+					</blockquote>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+		 	<div class="col-md-12" id="people">
+				<br/>
+				<h2 class="oswald">Politicos mejores</h2>
+				<hr style="border-top-color:#ddd !important;"/>
+				<div class="row francois text-center">
+					<div class="col-md-2 text-center">
+						<div class="person mexico"></div>
+						<p><small>Enrique Peña Nieto</small></p>
+					</div>
+					<div class="col-md-2 text-center">
+						<div class="person mexico"></div>
+						<p><small>Enrique Peña Nieto</small></p>
+					</div>
+					<div class="col-md-2 text-center">
+						<div class="person mexico"></div>
+						<p><small>Enrique Peña Nieto</small></p>
+					</div>
+					<div class="col-md-2 text-center">
+						<div class="person mexico"></div>
+						<p><small>Enrique Peña Nieto</small></p>
+					</div>
+					<div class="col-md-2 text-center">
+						<div class="person mexico"></div>
+						<p><small>Enrique Peña Nieto</small></p>
+					</div>
+					<div class="col-md-2 text-center">
+						<div class="person mexico"></div>
+						<p><small>Enrique Peña Nieto</small></p>
+					</div>
+
+					<div class="col-md-12 text-center">
+						<br/>
+						<a href="#" class="btn btn-default form-control">Ver todo los personas</a>
+					</div>
+				</div>
+		 	</div>
+		</div> <!-- end of .row -->
+
+		<hr>
+
+
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="oswald">Hechos recientes</h2>
+				<hr/>
+				<ul class="media-list">
+				  <li class="media">
+				    <a class="pull-left" href="#">
+				      <img class="media-object" src="http://news.bbcimg.co.uk/media/images/74544000/jpg/_74544165_3778269e-bf30-4b52-92af-9237a0bdd9f3.jpg" alt="..." height="100" style="width:100px">
+				    </a>
+				    <div class="media-body">
+				      <h4 class="media-heading">
+				      	<img src="images/venezuela.png" height="15"/>
+				      	Maduro va hacer cosas con dinero
+				      </h4>
+				      "by the end of the year, we will be choking off and overcoming (...) inflation"
+				      <br/>
+				      <span class="label label-default">investigando</span>
+				    </div>
+				    <hr/>
+				  </li>
+				  <li class="media">
+				    <a class="pull-left" href="#">
+				      <img class="media-object" src="http://thecubaneconomy.com/wp-content/uploads/2012/06/cuba-computer.jpg" alt="..." height="100" style="width:100px">
+				    </a>
+				    <div class="media-body">
+				      <h4 class="media-heading">
+				      	<img src="images/cuba.png" height="15"/>
+				      	Castro lifts ban on computers
+				      </h4>
+				      "los computadores son bueno"
+				      <br/>
+				      <span class="label label-success">verdad!</span>
+				    </div>
+				    <hr/>
+				  </li>
+				  <li class="media">
+				    <a class="pull-left" href="#">
+				      <img class="media-object" src="https://external-mia.xx.fbcdn.net/safe_image.php?d=AQDpjEQHDIiHqnLk&w=116&h=116&url=http%3A%2F%2Fstatic4.businessinsider.com%2Fimage%2F535930206bb3f7565e632c09%2Fthe-22-most-miserable-countries-in-the-world.jpg&cfs=1&l" alt="..." height="100">
+				    </a>
+				    <div class="media-body">
+				      <h4 class="media-heading">
+				      	<img src="images/venezuela.png" height="15"/>
+				      	Maduro va matar personas
+				      </h4>
+				      "voy a matar personas innocentes"
+				      <br/>
+				      <span class="label label-success">verdad!</span>
+				    </div>
+				    <hr/>
+				  </li>
+				</ul>
+				<ul class="pager">
+				  <li class="previous"><a href="#">&larr;</a></li>
+				  <li class="next"><a href="#">&rarr;</a></li>
+				</ul>
+			</div>
+		</div><!-- ewhat? -->
+
+		<hr>
+
+		<footer>
+			<p>&copy; Company 2014</p>
+		</footer>
+	</div> <!-- /container -->
 {% endblock %}
