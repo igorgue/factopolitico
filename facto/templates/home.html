@@ -132,26 +132,17 @@
         <h2 class="oswald">Verdad desde país</h2>
         <hr style="border-top-color:#ddd !important;"/>
         <div class="row francois">
-          <div class="col-md-6">
-            <div class="country mexico"></div>
-            <p><small>Mexico</small></p>
-          </div>
-          <div class="col-md-6 text-center">
-            <div class="country colombia"></div>
-            <p><small>Colombia</small></p>
-          </div>
-          <div class="col-md-6 text-center">
-            <div class="country argentina"></div>
-            <p><small>Argentina</small></p>
-          </div>
-          <div class="col-md-6 text-center">
-            <div class="country peru"></div>
-            <p><small>Peru</small></p>
-          </div>
+
+          {% for country in countries %}
+            <div class="col-md-6">
+              <div class="country {{ country.slug }}"></div>
+              <p><small>{{ country.name }}</small></p>
+            </div>
+          {% endfor %}
 
           <div class="col-md-12 text-center">
             <br/>
-            <a href="#" class="btn btn-default form-control">Ver todo los paises</a>
+            <a href="#" class="btn btn-default form-control">Ver todos los paises</a>
           </div>
 
           <div id="more-countries" style="display:none;">
