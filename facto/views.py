@@ -43,13 +43,28 @@ def country_fact_list(request, slug):
     return render_to_response('country_facts.html', locals(), context_instance=RequestContext(request))
 
 def people(request):
-    return render_to_response('home.html', {}, context_instance=RequestContext(request))
+    people_list = Person.objects.all()
+    paginator = Paginator(people_list, 25)
+
+    page = request.GET.get('page')
+
+    try:
+        people = paginator.page(page)
+    except PageNotAnInteger:
+        people = paginator.page(1)
+    except EmptyPage:
+        people = paginator.page(paginator.num_pages)
+
+    return render_to_response('home.html', locals(), context_instance=RequestContext(request))
 
 def get_people(request, slug):
-    return render_to_response('home.html', {}, context_instance=RequestContext(request))
+    person = get_object_or_404(Person, slug=slug)
+    return render_to_response('home.html', locals(), context_instance=RequestContext(request))
 
 def get_fact(request, people_slug, fact_slug):
-    return render_to_response('home.html', {}, context_instance=RequestContext(request))
+    person = get_object_or_404(Person, slug=people_slug)
+    fact = get_object_or_404(Fact, slug=fact_slug, person=person)
+    return render_to_response('home.html', locals(), context_instance=RequestContext(request))
 
 def recent_facts(request):
     return render_to_response('home.html', {}, context_instance=RequestContext(request))
