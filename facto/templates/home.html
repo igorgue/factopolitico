@@ -134,10 +134,12 @@
         <div class="row francois">
 
           {% for country in countries %}
-            <div class="col-md-6">
-              <div class="country {{ country.slug }}"></div>
-              <p><small>{{ country.name }}</small></p>
-            </div>
+            <a href="{% url "get_country" country.slug %}">
+              <div class="col-md-6">
+                <div class="country {{ country.slug }}"></div>
+                <p><small>{{ country.name }}</small></p>
+              </div>
+            </a>
           {% endfor %}
 
           <div class="col-md-12 text-center">
