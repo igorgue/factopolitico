@@ -22,10 +22,13 @@ SECRET_KEY = '1pg^(6&qjbbx+x2q2)&bcrjls!^mikh+_y+4rcjicmlyg*(uix'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = []
+TEMPLATE_DIRS = (
+    BASE_DIR + '/templates/'
+)
 
+ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
@@ -36,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'facto',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+{% for country in counties %}
+  {{ country }}
+{% empty %}
+  No countries
+{% endfor %}
+{% endblock %}
