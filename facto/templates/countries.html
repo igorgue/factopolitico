@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-{% for country in counties %}
-  {{ country }}
-{% empty %}
-  No countries
-{% endfor %}
+  {% for country in countries.object_list %}
+    <a href="{% url "get_country" country.slug %}">
+      {{ country.name }}
+    </a>
+  {% endfor %}
 {% endblock %}
