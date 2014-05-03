@@ -41,6 +41,9 @@ class Category(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False, blank=False, null=False)
     updated_at = models.DateTimeField(auto_now_add=True, auto_now=True, blank=False, null=False)
 
+    def facts_count(self):
+        return Fact.filter(category=self).count()
+
     def __unicode__(self):
         return self.title
 
@@ -60,6 +63,7 @@ class Fact(models.Model):
     video = models.TextField(blank=True) # embed code
     content = models.TextField(blank=False)
     status = models.CharField(max_length=255, choices=STATUS, blank=True, default=STATUS[0][0])
+    # ^^^ get_status_display to show name in templates
 
     user = models.ForeignKey(User)
     person = models.ForeignKey(Person, related_name='person')
