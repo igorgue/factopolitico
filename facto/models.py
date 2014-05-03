@@ -42,7 +42,7 @@ class Category(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True, auto_now=True, blank=False, null=False)
 
     def facts_count(self):
-        return Fact.filter(category=self).count()
+        return Fact.objects.filter(category=self).count()
 
     def __unicode__(self):
         return self.title

@@ -31,7 +31,7 @@ def countries(request):
     return render_to_response('countries.html', locals(), context_instance=RequestContext(request))
 
 def get_country(request, slug):
-    # country = get_object_or_404(Country, slug=slug)
+    country = get_object_or_404(Country, slug=slug)
     return render_to_response('get_country.html', locals(), context_instance=RequestContext(request))
 
 def country_fact_list(request, slug):

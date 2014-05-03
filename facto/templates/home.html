@@ -235,22 +235,12 @@
         <h2 class="oswald">Hechos por categoria</h3>
         <hr/>
         <ul class="list-group">
-          <li class="list-group-item">
-            <span class="badge">104</span>
-            Economy
-          </li>
-          <li class="list-group-item">
-            <span class="badge">1094</span>
-            Drugs
-          </li>
-          <li class="list-group-item">
-            <span class="badge">88</span>
-            Elections
-          </li>
-          <li class="list-group-item">
-            <span class="badge">2</span>
-            Healthcare
-          </li>
+          {% for category in categories %}
+            <li class="list-group-item">
+              <span class="badge">{{ category.facts_count }}</span>
+              <a href="{% url "get_category" category.slug %}">{{ category.title }}</a>
+            </li>
+          {% endfor %}
         </ul>
       </div>
     </div><!-- ewhat? -->
