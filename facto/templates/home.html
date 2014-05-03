@@ -4,6 +4,109 @@
 
 {% block title %}Facto Politico{% endblock %}
 
+{% block extraheader %}
+  <!-- Custom styles for this template -->
+  <style type="text/css">
+    #or{
+      background-color:#fff; 
+      height: 40px; 
+      padding: 10px 0px 25px; 
+      position: relative; 
+      left: -17px; 
+      top: -350px;
+      text-align: center;
+    }
+
+    .francois{
+      font-family:'Francois One';
+    }
+
+    .oswald{
+      font-family: 'Oswald';
+    }
+
+    .country{
+      overflow: hidden;
+      width: 110px;
+      height: 110px;
+      border-radius: 55px; 
+      border: 1px solid #ccc; 
+      background-repeat: no-repeat; 
+      margin: 0 auto;
+    }
+
+    .country:hover, .person:hover{
+      border: 1px solid #333; 
+    }
+
+    .country.mexico{
+      background-image: url({% static "images/mexico.png" %});
+      background-position: -45px -2px;
+    }
+
+    .country.colombia{
+      background-image:url({% static "images/colombia.png" %});
+      background-position: -45px -10px;
+    }
+
+    .country.argentina{
+      background-image:url({% static "images/argentina.png" %});
+      background-position: -45px -10px; 
+    }
+
+    .country.peru{
+      background-image:url({% static "images/peru.png" %});
+      background-position: -46px -10px;
+    }
+
+    .country.venezuela{
+      background-image:url({% static "images/venezuela.png" %});
+      background-position: -45px -10px; 
+    }
+
+    .country.chile{
+      background-image:url({% static "images/chile.png" %});
+      background-position: -25px -2px;
+    }
+
+    .country.ecuador{
+      background-image:url({% static "images/ecuador.png" %});
+      background-position: -45px -10px;
+    }
+
+    .country.cuba{
+      background-image:url({% static "images/cuba.png" %});
+      background-position: -25px 2px;
+    }
+
+    .country.bolivia{
+      background-image:url({% static "images/bolivia.png" %});
+      background-position: -45px -10px;
+    }
+
+    .country.guatemala{
+      background-image:url({% static "images/guatemala.png" %});
+      background-position: -45px -2px;
+    }
+
+    .person{
+      overflow:hidden;
+      width: 110px;
+      height:110px;
+      border-radius:55px; 
+      border: 1px solid #ccc; 
+      background-position: -25px -2px; 
+      background-size: 150px; 
+      background-repeat: no-repeat; 
+      margin: 0 auto;
+    }
+
+    .person.mexico{
+      background-image:url(https://dl.dropboxusercontent.com/sh/dpspzisengzho6k/arHsLXGxKV/mexico-president-orders-probe-into-restaurant-ruckus-1367357441-5486.jpg?token_hash=AAFIv-4HUEHRs9nR5J1X9Gd-JHNRWZhnfcv_VPaTu2e8Ng);
+    }
+  </style>
+{% endblock %}
+
 {% block jumbotron %}
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron" style="background-color:#FF3030;color: #fff;font-family: 'Oswald';position: relative; height: 205px; overflow: hidden;">
