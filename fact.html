@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+		<title>Fact</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Google web fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Oswald|Francois+One' rel='stylesheet' type='text/css'>
+
+		<!-- Custom styles for this template -->
+		<link href="jumbotron.css" rel="stylesheet">
+		<style type="text/css">
+			#or{
+				background-color:#fff; 
+				height: 40px; 
+				padding: 10px 0px 25px; 
+				position: relative; 
+				left: -17px; 
+				top: -350px;
+				text-align: center;
+			}
+
+			.francois{
+				font-family:'Francois One';
+			}
+
+			.oswald{
+				font-family: 'Oswald';
+			}
+
+			.country{
+				overflow: hidden;
+				width: 110px;
+				height: 110px;
+				border-radius: 55px; 
+				border: 1px solid #ccc; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+
+			.country:hover, .person:hover{
+				border: 1px solid #333; 
+			}
+
+			.country.mexico{
+				background-image: url(images/mexico.png);
+				background-position: -45px -2px;
+			}
+
+			.country.colombia{
+				background-image:url(images/colombia.png);
+				background-position: -45px -10px;
+			}
+
+			.country.argentina{
+				background-image:url(images/argentina.png);
+				background-position: -45px -10px; 
+			}
+
+			.country.peru{
+				background-image:url(images/peru.png);
+				background-position: -46px -10px;
+			}
+
+			.country.venezuela{
+				background-image:url(images/venezuela.png);
+				background-position: -45px -10px; 
+			}
+
+			.country.chile{
+				background-image:url(images/chile.png);
+				background-position: -25px -2px;
+			}
+
+			.country.ecuador{
+				background-image:url(images/ecuador.png);
+				background-position: -45px -10px;
+			}
+
+			.country.cuba{
+				background-image:url(images/cuba.png);
+				background-position: -25px 2px;
+			}
+
+			.country.bolivia{
+				background-image:url(images/bolivia.png);
+				background-position: -45px -10px;
+			}
+
+			.country.guatemala{
+				background-image:url(images/guatemala.png);
+				background-position: -45px -2px;
+			}
+
+			.person{
+				overflow:hidden;
+				width: 110px;
+				height:110px;
+				border-radius:55px; 
+				border: 1px solid #ccc; 
+				background-position: -25px -2px; 
+				background-size: 150px; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+
+			.quote-head.mexico{
+				background-image:url(https://dl.dropboxusercontent.com/sh/dpspzisengzho6k/arHsLXGxKV/mexico-president-orders-probe-into-restaurant-ruckus-1367357441-5486.jpg?token_hash=AAFIv-4HUEHRs9nR5J1X9Gd-JHNRWZhnfcv_VPaTu2e8Ng);
+			}
+
+			.quote-head{
+				overflow:hidden;
+				width: 80px;
+				height:80px;
+				border-radius:40px; 
+				border: 1px solid #ccc; 
+				background-position: -15px 0px; 
+				background-size: 105px; 
+				background-repeat: no-repeat; 
+			}
+		</style>
+
+		<!-- Just for debugging purposes. Don't actually copy this line! -->
+		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body style="padding-top: 50px;">
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Facto Politico</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron" style="background-color:#FF3030;color: #fff;">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-1">
+						<div class="quote-head mexico"></div>
+					</div>
+					<div class="col-md-11">
+						<blockquote style="margin-top:0px;background-color:#F9CECE;color:#333;border-left: 5px solid #B51D1D;">
+							<p>
+								<span style="font-size: 36px;">&ldquo;</span> &nbsp; There will be free tacos in Mexico by 2015 <span style="font-size: 36px;">&rdquo;</span>
+							</p>
+							<footer>
+								Enrique Peña Nieto en <cite title="Source Title">Febrero 24, 2014</cite> ( <a href="#">fuente</a> )
+							</footer>
+						</blockquote>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<!-- Example row of columns -->
+			<div class="row">
+				<div class="col-md-3">
+					<h2 class="oswald">Es verdad?</h3>
+					<hr/>
+					<h2><span class="label label-success">Un Poquito Verdad</span></h2>
+				</div>
+				<div class="col-md-9">
+					<h2 class="oswald">Explicación</h2>
+					<hr style="border-top-color:#ddd !important;"/>
+					<p>
+						Text here
+					</p>
+
+					<h2 class="oswald">Fuentes</h2>
+					<hr/>
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<span style="font-size: 36px;">&ldquo;</span> &nbsp; 
+							<span style="font-size: 26px;">Some quote from the article here</span>
+						</div>
+						<div class="panel-footer">
+							<span class="badge">Feb 27, 2014</span>
+							Original Article Title Here - <a href="#">[ linko ]</a>
+						</div>
+					</div>
+					<br/>
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<iframe style="width: 100%; height: 400px;" src="http://www.youtube.com/embed/ylfKnWWzg8g" frameborder="0" allowfullscreen></iframe>
+						</div>
+						<div class="panel-footer">
+							<span class="badge">Feb 27, 2014</span>
+							Original Video Title Here - <a href="#">[ linko ]</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+
+			<hr>
+
+
+			<div class="row">
+				
+			</div><!-- ewhat? -->
+
+			<hr>
+
+			<footer>
+				<p>&copy; Company 2014</p>
+			</footer>
+		</div> <!-- /container -->
+
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
