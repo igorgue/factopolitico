@@ -191,48 +191,19 @@
           {% for fact in recent_facts %}
             <li class="media">
               <a class="pull-left" href="#">
-                <img class="media-object" src="http://news.bbcimg.co.uk/media/images/74544000/jpg/_74544165_3778269e-bf30-4b52-92af-9237a0bdd9f3.jpg" alt="..." height="100" style="width:100px">
+                <img class="media-object" src="{{ fact.image_url }}" alt="..." height="100" style="width:100px">
               </a>
               <div class="media-body">
                 <h4 class="media-heading">
-                  <img src="{% static "images/venezuela.png"%}" height="15"/>
-                  Maduro va hacer cosas con dinero
+                  <img src="{% static fact.country_image_url %}" height="15"/>
+                  {{ fact.title }}
                 </h4>
-                "by the end of the year, we will be choking off and overcoming (...) inflation"
+                "{{ fact.quote }}"
                 <br/>
-                <span class="label label-default">investigando</span>
+                <span class="label label-default">{{ fact.get_status_display }}</span>
               </div>
             </li>
           {% endfor %}
-
-          <!--<li class="media">-->
-            <!--<a class="pull-left" href="#">-->
-              <!--<img class="media-object" src="http://thecubaneconomy.com/wp-content/uploads/2012/06/cuba-computer.jpg" alt="..." height="100" style="width:100px">-->
-            <!--</a>-->
-            <!--<div class="media-body">-->
-              <!--<h4 class="media-heading">-->
-                <!--<img src="{% static "images/cuba.png" %}" height="15"/>-->
-                <!--Castro lifts ban on computers-->
-              <!--</h4>-->
-              <!--"los computadores son bueno"-->
-              <!--<br/>-->
-              <!--<span class="label label-success">verdad!</span>-->
-            <!--</div>-->
-          <!--</li>-->
-          <!--<li class="media">-->
-            <!--<a class="pull-left" href="#">-->
-              <!--<img class="media-object" src="https://external-mia.xx.fbcdn.net/safe_image.php?d=AQDpjEQHDIiHqnLk&w=116&h=116&url=http%3A%2F%2Fstatic4.businessinsider.com%2Fimage%2F535930206bb3f7565e632c09%2Fthe-22-most-miserable-countries-in-the-world.jpg&cfs=1&l" alt="..." height="100">-->
-            <!--</a>-->
-            <!--<div class="media-body">-->
-              <!--<h4 class="media-heading">-->
-                <!--<img src="{% static "images/venezuela.png"%}" height="15"/>-->
-                <!--Maduro va matar personas-->
-              <!--</h4>-->
-              <!--"voy a matar personas innocentes"-->
-              <!--<br/>-->
-              <!--<span class="label label-success">verdad!</span>-->
-            <!--</div>-->
-          <!--</li>-->
         </ul>
       </div>
       <div class="col-md-4">

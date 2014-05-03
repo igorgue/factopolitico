@@ -74,6 +74,9 @@ class Fact(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False, blank=False, null=False)
     updated_at = models.DateTimeField(auto_now_add=True, auto_now=True, blank=False, null=False)
 
+    def country_image_url(self):
+        return self.person.country.picture_url
+
     def __unicode__(self):
         return self.title
 
