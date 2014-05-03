@@ -113,8 +113,20 @@
 				margin: 0 auto;
 			}
 
-			.person.mexico{
+			.head.mexico{
 				background-image:url(https://dl.dropboxusercontent.com/sh/dpspzisengzho6k/arHsLXGxKV/mexico-president-orders-probe-into-restaurant-ruckus-1367357441-5486.jpg?token_hash=AAFIv-4HUEHRs9nR5J1X9Gd-JHNRWZhnfcv_VPaTu2e8Ng);
+			}
+
+			.head{
+				overflow:hidden;
+				width: 210px;
+				height:210px;
+				border-radius:105px; 
+				border: 1px solid #ccc; 
+				background-position: -75px 0px; 
+				background-size: 305px; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
 			}
 		</style>
 
@@ -138,21 +150,47 @@
 		</div>
 
 		<!-- Main jumbotron for a primary marketing message or call to action -->
-		<div class="jumbotron" style="background-color:#FF3030;color: #fff;font-family: 'Oswald';position: relative; height: 325px; overflow: hidden;">
-			<div style="position:relative; left: -40px; top: -50px;">
-				<video autoplay="" muted="" loop="">
-					<source src="file://localhost/Users/austonbunsen/Sites/factopolitico/videos/venezuela.mp4" type="video/mp4">
-					<source src="https://s3.amazonaws.com/liveninja/katana/katanamontage1008.webm" type="video/webm">
-					Your browser does not support the video tag.
-				</video>
-			</div>
-			<div class="container text-center" style="position:absolute; top: 0px;">
+		<div class="jumbotron" style="background-color:#FF3030;color: #fff;font-family: 'Oswald';">
+			<div class="container text-center">
 				<br/>
 				<br/>
-				<img src="images/venezuela.png" />
-				<h1 style="text-shadow:0 0 3px rgba(0,0,0,.8);">La verdad sobre politica en Venezuela.</h1>
+				<div class="head mexico"></div>
+				<h1 style="text-shadow:0 0 3px rgba(0,0,0,.8);">Enrique Peña Nieto</h1>
 			</div>
 		</div>
+		<div class="container" id="promise-stats">
+			<!-- Example row of columns -->
+			<div class="row">
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+						32%
+						<br/>
+						<span class="label label-default">Investigando</span>
+					</h2>
+				</div>
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+						35%
+						<br/>
+						<span class="label label-success">Almost True!</span>
+					</h2>
+				</div>
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+						35%
+						<br/>
+						<span class="label label-success">Verdad!</span>
+					</h2>
+				</div>
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+						25%
+						<br/>
+						<span class="label label-danger">Falso!</span>
+					</h2>
+				</div>
+			</div>
+		</div> <!-- end of stats -->
 
 		<div class="container">
 			<!-- Example row of columns -->
