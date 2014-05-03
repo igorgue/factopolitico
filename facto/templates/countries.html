@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
   {% for country in countries.object_list %}
-    {{ country.name }}
+    <a href="{% url "get_country" country.slug %}">
+      {{ country.name }}
+    </a>
   {% endfor %}
 {% endblock %}
