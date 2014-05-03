@@ -5,7 +5,15 @@ from django.template import RequestContext
 from facto.models import Country, Fact, Person, Category
 
 def home(request):
-    return render_to_response('home.html', {}, context_instance=RequestContext(request))
+    # Summaries
+    n = 4
+
+    countries = Country.objects.all()[:n]
+    people = Person.objects.all()[:n]
+    recent_facts = Fact.recent_facts(n)
+    categories = Category.objects.all()[:n]
+
+    return render_to_response('home.html', locals(), context_instance=RequestContext(request))
 
 def countries(request):
     countries_list = Country.objects.all()
