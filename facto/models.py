@@ -50,7 +50,7 @@ class Category(models.Model):
 class Fact(models.Model):
     STATUS = (
         ('investigating', 'Investigando'),
-        ('almost-true', 'Casi Vedad'),
+        ('almost-true', 'Casi Verdad'),
         ('true', 'Verdad'),
         ('half-true', 'Media Verdad'),
         ('false', 'Falso'),
