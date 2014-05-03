@@ -22,13 +22,13 @@ SECRET_KEY = '1pg^(6&qjbbx+x2q2)&bcrjls!^mikh+_y+4rcjicmlyg*(uix'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 TEMPLATE_DIRS = (
     BASE_DIR + '/templates/'
 )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
