@@ -11,7 +11,7 @@ class Country(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True, auto_now=True, blank=False, null=False)
 
     def facts_by_country(self):
-        return []
+        return Fact.objects.filter(person__country=self)
 
     def __unicode__(self):
         return self.name
