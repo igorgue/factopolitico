@@ -49,13 +49,13 @@ class Category(models.Model):
 
 class Fact(models.Model):
     STATUS = (
-        ('investigating', 'Investigating'),
-        ('almost-true', 'Almost True'),
-        ('true', 'True'),
-        ('half-true', 'Half True'),
-        ('false', 'False'),
-        ('mostly-false', 'Mostly False'),
-        ('Pants On Fire', 'Pants On Fire'),
+        ('investigating', 'Investigando'),
+        ('almost-true', 'Casi Vedad'),
+        ('true', 'Verdad'),
+        ('half-true', 'Media Verdad'),
+        ('false', 'Falso'),
+        ('mostly-false', 'Sobretodo Falso'),
+        ('pants-on-fire', 'Tremenda Mentira!'),
     )
 
     title = models.CharField(max_length=255, blank=False)
