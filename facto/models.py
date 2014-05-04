@@ -165,6 +165,9 @@ class Fact(models.Model):
     def __unicode__(self):
         return self.title
 
+    def sources(self):
+        return Source.objects.filter(fact=self)
+
     def save(self, *args, **kwargs):
         if self.slug == '':
             x = random.randint(1, 99999999999)
