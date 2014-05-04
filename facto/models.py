@@ -108,6 +108,12 @@ class Category(models.Model):
     def __unicode__(self):
         return self.title
 
+    def save(self, *args, **kwargs):
+        if self.slug == '':
+            self.slug = slugify(self.title)
+
+        super(Category, self).save(*args, **kwargs)
+
 class Fact(models.Model):
     STATUS = (
         ('investigating', 'Investigando'),
@@ -167,11 +173,11 @@ class Fact(models.Model):
 
 class Source(models.Model):
     url = models.URLField(max_length=255, blank=False)
-    title = models.CharField(max_length=255, blank=False)
+    title = models.CharField(max_length=255, blank=True)
 
     fact = models.ForeignKey(Fact, related_name='fact')
 
-    slug = models.SlugField(max_length=255, blank=False)
+    slug = models.SlugField(max_length=255, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False, blank=False, null=False)
     updated_at = models.DateTimeField(auto_now_add=True, auto_now=True, blank=False, null=False)
 
