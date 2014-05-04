@@ -31,6 +31,30 @@ class Person(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False, blank=False, null=False)
     updated_at = models.DateTimeField(auto_now_add=True, auto_now=True, blank=False, null=False)
 
+    def facts_breakdown(self):
+        investigating = Fact.objects.filter(person=self, status=Fact.STATUS[0][0]).count()
+        almost_true = Fact.objects.filter(person=self, status=Fact.STATUS[1][0]).count()
+        true = Fact.objects.filter(person=self, status=Fact.STATUS[2][0]).count()
+        half_true = Fact.objects.filter(person=self, status=Fact.STATUS[3][0]).count()
+        false = Fact.objects.filter(person=self, status=Fact.STATUS[4][0]).count()
+        mostly_false = Fact.objects.filter(person=self, status=Fact.STATUS[5][0]).count()
+        pants_on_fire = Fact.objects.filter(person=self, status=Fact.STATUS[6][0]).count()
+
+        breakdown = {
+            'investigating': "{:.0%}".format(float(investigating) / float(self.facts_count())),
+            'almost_true': "{:.0%}".format(float(almost_true) / float(self.facts_count())),
+            'true': "{:.0%}".format(float(true) / float(self.facts_count())),
+            'half_true': "{:.0%}".format(float(half_true) / float(self.facts_count())),
+            'false': "{:.0%}".format(float(false) / float(self.facts_count())),
+            'mostly_false': "{:.0%}".format(float(mostly_false) / float(self.facts_count())),
+            'pants_on_fire': "{:.0%}".format(float(pants_on_fire) / float(self.facts_count())),
+        }
+
+        return breakdown
+
+    def facts_count(self):
+        return Fact.objects.filter(person=self).count()
+
     def __unicode__(self):
         return self.name
 

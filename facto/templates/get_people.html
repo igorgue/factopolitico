@@ -1,5 +1,277 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
-{% block content %}
-  <h1 id="heading">Hello</h1>
-{% endblock %}
+{% load staticfiles %}
+  {% block extraheader %}
+		<style type="text/css">
+			#or{
+				background-color:#fff; 
+				height: 40px; 
+				padding: 10px 0px 25px; 
+				position: relative; 
+				left: -17px; 
+				top: -350px;
+				text-align: center;
+			}
+
+			.francois{
+				font-family:'Francois One';
+			}
+
+			.oswald{
+				font-family: 'Oswald';
+			}
+
+			.country{
+				overflow: hidden;
+				width: 110px;
+				height: 110px;
+				border-radius: 55px; 
+				border: 1px solid #ccc; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+
+			.country:hover, .person:hover{
+				border: 1px solid #333; 
+			}
+
+			.country.mexico{
+				background-image: url(images/mexico.png);
+				background-position: -45px -2px;
+			}
+
+			.country.colombia{
+				background-image:url(images/colombia.png);
+				background-position: -45px -10px;
+			}
+
+			.country.argentina{
+				background-image:url(images/argentina.png);
+				background-position: -45px -10px; 
+			}
+
+			.country.peru{
+				background-image:url(images/peru.png);
+				background-position: -46px -10px;
+			}
+
+			.country.venezuela{
+				background-image:url(images/venezuela.png);
+				background-position: -45px -10px; 
+			}
+
+			.country.chile{
+				background-image:url(images/chile.png);
+				background-position: -25px -2px;
+			}
+
+			.country.ecuador{
+				background-image:url(images/ecuador.png);
+				background-position: -45px -10px;
+			}
+
+			.country.cuba{
+				background-image:url(images/cuba.png);
+				background-position: -25px 2px;
+			}
+
+			.country.bolivia{
+				background-image:url(images/bolivia.png);
+				background-position: -45px -10px;
+			}
+
+			.country.guatemala{
+				background-image:url(images/guatemala.png);
+				background-position: -45px -2px;
+			}
+
+			.person{
+				overflow:hidden;
+				width: 110px;
+				height:110px;
+				border-radius:55px; 
+				border: 1px solid #ccc; 
+				background-position: -25px -2px; 
+				background-size: 150px; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+
+      .head.{{ person.country.slug }}{
+        background-image:url({{ person.profile_pic_url }});
+			}
+
+			.head{
+				overflow:hidden;
+				width: 210px;
+				height:210px;
+				border-radius:105px; 
+				border: 1px solid #ccc; 
+				background-position: -75px 0px; 
+				background-size: 305px; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+		</style>
+  {% endblock %}
+
+  {% block jumbotron %}
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron" style="background-color:#FF3030;color: #fff;font-family: 'Oswald';position: relative; height: 450px; overflow: hidden;">
+			<!--<div style="position:relative; left: -40px; top: -50px;">-->
+				<!--<video autoplay="" muted="" loop="">-->
+					<!--<source src="file://localhost/Users/austonbunsen/Sites/factopolitico/static/videos/mexico.mp4" type="video/mp4">-->
+					<!--Your browser does not support the video tag.-->
+				<!--</video>-->
+			<!--</div>-->
+			<div class="container text-center"  style="position:absolute; top: 10px;">
+        <div class="head {{ person.country.slug }}"></div>
+        <h1 style="text-shadow:0 0 3px rgba(0,0,0,.8);">{{ person.name }}</h1>
+        <p class="francois">({{ person.title }})</p>
+        <img src="{{ person.country.picture_url }}" height="50"/>
+			</div>
+		</div>
+  {% endblock %}
+
+  {% block content %}
+    "{{ person.facts_breakdown }}"
+		<div class="container" id="promise-stats">
+			<!-- Example row of columns -->
+			<div class="row">
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+						23%
+						<br/>
+						<span class="label label-success">Verdad!</span>
+					</h2>
+				</div>
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+						9%
+						<br/>
+						<span class="label label-info">Casi Verdad</span>
+					</h2>
+				</div>
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+						18%
+						<br/>
+						<span class="label label-primary">Media Verdad</span>
+					</h2>
+				</div>
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+						15%
+						<br/>
+						<span class="label label-danger">Media Falso</span>
+					</h2>
+				</div>
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+						13%
+						<br/>
+						<span class="label label-danger">Falso!</span>
+					</h2>
+				</div>
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+						22%
+						<br/>
+						<span class="label label-default">Investigando</span>
+					</h2>
+				</div>
+			</div>
+		</div> <!-- end of stats -->
+
+		<div class="container">
+			<!-- Example row of columns -->
+			<div class="row">
+				<div class="col-md-4">
+					<h2 class="oswald">Hechos desde categoria</h3>
+					<hr/>
+					<ul class="list-group">
+					  <li class="list-group-item">
+					    <span class="badge">104</span>
+					    Economy
+					  </li>
+					  <li class="list-group-item">
+					    <span class="badge">1094</span>
+					    Drugs
+					  </li>
+					  <li class="list-group-item">
+					    <span class="badge">88</span>
+					    Elections
+					  </li>
+					  <li class="list-group-item">
+					    <span class="badge">2</span>
+					    Healthcare
+					  </li>
+					</ul>
+				</div>
+				<div class="col-md-8">
+					<h2 class="oswald">Hecho mas reciente</h2>
+					<hr style="border-top-color:#ddd !important;"/>
+					<div style="border-left: 5px solid #ccc; background-color: #efefef; padding: 20px 20px 5px 20px; margin: 20px 0;">
+						<blockquote>
+						  <p>
+						  	<span class="label label-success">Verdad!</span>
+						  	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+						  </p>
+						  <footer>
+						  	Nicolas Maduro en <cite title="Source Title">Source Title</cite> ( <a href="#">Ver mas</a> )
+						  </footer>
+						</blockquote>
+					</div>
+
+					<h2 class="oswald">Otros hechos</h2>
+					<hr/>
+					<ul class="media-list">
+					  <li class="media">
+					    <a class="pull-left" href="#">
+					      <img class="media-object" src="http://news.bbcimg.co.uk/media/images/74544000/jpg/_74544165_3778269e-bf30-4b52-92af-9237a0bdd9f3.jpg" alt="..." height="100" style="width:100px">
+					    </a>
+					    <div class="media-body">
+					      <h4 class="media-heading">
+					      	Guacamole is the best food for you
+					      </h4>
+					      "by the end of the year, we will be choking off and overcoming (...) inflation"
+					      <br/>
+					      <span class="label label-default">investigando</span>
+					    </div>
+					    <hr/>
+					  </li>
+					  <li class="media">
+					    <a class="pull-left" href="#">
+					      <img class="media-object" src="http://thecubaneconomy.com/wp-content/uploads/2012/06/cuba-computer.jpg" alt="..." height="100" style="width:100px">
+					    </a>
+					    <div class="media-body">
+					      <h4 class="media-heading">
+					      	Burritos are not real in mexico
+					      </h4>
+					      "los computadores son bueno"
+					      <br/>
+					      <span class="label label-success">verdad!</span>
+					    </div>
+					    <hr/>
+					  </li>
+					  <li class="media">
+					    <a class="pull-left" href="#">
+					      <img class="media-object" src="https://external-mia.xx.fbcdn.net/safe_image.php?d=AQDpjEQHDIiHqnLk&w=116&h=116&url=http%3A%2F%2Fstatic4.businessinsider.com%2Fimage%2F535930206bb3f7565e632c09%2Fthe-22-most-miserable-countries-in-the-world.jpg&cfs=1&l" alt="..." height="100">
+					    </a>
+					    <div class="media-body">
+					      <h4 class="media-heading">
+					      	Free Tacos for everyone
+					      </h4>
+					      "voy a matar personas innocentes"
+					      <br/>
+					      <span class="label label-success">verdad!</span>
+					    </div>
+					    <hr/>
+					  </li>
+					</ul>
+					<ul class="pager">
+					  <li class="previous"><a href="#">&larr;</a></li>
+					  <li class="next"><a href="#">&rarr;</a></li>
+					</ul>
+				</div>
+			</div>
+    {% endblock %}
