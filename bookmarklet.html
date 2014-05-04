@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+		<title>Bookmarklet</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Google web fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Oswald|Francois+One' rel='stylesheet' type='text/css'>
+
+		<!-- Custom styles for this template -->
+		<link href="jumbotron.css" rel="stylesheet">
+		<style type="text/css">
+			#or{
+				background-color:#fff; 
+				height: 40px; 
+				padding: 10px 0px 25px; 
+				position: relative; 
+				left: -17px; 
+				top: -350px;
+				text-align: center;
+			}
+
+			.francois{
+				font-family:'Francois One';
+			}
+
+			.oswald{
+				font-family: 'Oswald';
+			}
+
+			.country{
+				overflow: hidden;
+				width: 110px;
+				height: 110px;
+				border-radius: 55px; 
+				border: 1px solid #ccc; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+
+			.country:hover, .person:hover{
+				border: 1px solid #333; 
+			}
+
+			.country.mexico{
+				background-image: url(images/mexico.png);
+				background-position: -45px -2px;
+			}
+
+			.country.colombia{
+				background-image:url(images/colombia.png);
+				background-position: -45px -10px;
+			}
+
+			.country.argentina{
+				background-image:url(images/argentina.png);
+				background-position: -45px -10px; 
+			}
+
+			.country.peru{
+				background-image:url(images/peru.png);
+				background-position: -46px -10px;
+			}
+
+			.country.venezuela{
+				background-image:url(images/venezuela.png);
+				background-position: -45px -10px; 
+			}
+
+			.country.chile{
+				background-image:url(images/chile.png);
+				background-position: -25px -2px;
+			}
+
+			.country.ecuador{
+				background-image:url(images/ecuador.png);
+				background-position: -45px -10px;
+			}
+
+			.country.cuba{
+				background-image:url(images/cuba.png);
+				background-position: -25px 2px;
+			}
+
+			.country.bolivia{
+				background-image:url(images/bolivia.png);
+				background-position: -45px -10px;
+			}
+
+			.country.guatemala{
+				background-image:url(images/guatemala.png);
+				background-position: -45px -2px;
+			}
+
+			.person{
+				overflow:hidden;
+				width: 110px;
+				height:110px;
+				border-radius:55px; 
+				border: 1px solid #ccc; 
+				background-position: -25px -2px; 
+				background-size: 150px; 
+				background-repeat: no-repeat; 
+			}
+
+			.quote-head.mexico{
+				background-image:url(https://dl.dropboxusercontent.com/sh/dpspzisengzho6k/arHsLXGxKV/mexico-president-orders-probe-into-restaurant-ruckus-1367357441-5486.jpg?token_hash=AAFIv-4HUEHRs9nR5J1X9Gd-JHNRWZhnfcv_VPaTu2e8Ng);
+			}
+
+			.quote-head{
+				overflow:hidden;
+				width: 80px;
+				height:80px;
+				border-radius:40px; 
+				border: 1px solid #ccc; 
+				background-position: -15px 0px; 
+				background-size: 105px; 
+				background-repeat: no-repeat; 
+			}
+
+			.person.mexico{
+				background-image:url(https://dl.dropboxusercontent.com/sh/dpspzisengzho6k/arHsLXGxKV/mexico-president-orders-probe-into-restaurant-ruckus-1367357441-5486.jpg?token_hash=AAFIv-4HUEHRs9nR5J1X9Gd-JHNRWZhnfcv_VPaTu2e8Ng);
+			}
+		</style>
+
+		<!-- Just for debugging purposes. Don't actually copy this line! -->
+		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body style="padding-top: 50px;">
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Facto Politico</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron" style="background-color:#FF3030;color: #fff;font-family: 'Oswald'; padding-bottom: 0px !important;">
+			<div class="container">
+				<div class="pull-left" style="width:670px;">
+					<h1 style="text-shadow:0 0 3px rgba(0,0,0,.8);">Push facts to FactoPolitico</h1>
+					<p>Use our bookmarklet for Firefox, Chrome &amp; Safari to send facts to the FactoPolitico team for verification.</p> 
+				</div>
+				<img src="static/images/bookmarklet-image.png" class="pull-right" style="width: 400px"/>
+			</div>
+		</div>
+
+		<div class="container">
+			<!-- Example row of columns -->
+			<div class="row">
+				<div class="col-md-3">
+					<h2 class="oswald">Bookmarklet</h3>
+					<hr/>
+					<a href="" class="btn btn-default form-control">Mandar a FactoPolitico</a>
+					<br/>
+					<br/>
+					<p>
+						Drag the button above that says "Mandar a FactoPolitico" to your bookmarks bar.
+					</p>
+				</div>
+				<div class="col-md-9">
+					<h2 class="oswald">Porque?</h2>
+					<hr style="border-top-color:#ddd !important;"/>
+					<p style="font-size:18px;">
+						Because Latin American leaders need to be held accountable. Because you deserve to know when the people you elected are telling the truth or lying to your face. Because an open and transparent government is better for everyone.
+					</p>
+					<p>
+						You will be a part of a continent wide movement to let politicians know that they can't use lies as part of their campaign platform. All you need to do is install the bookmarklet - then when you see a website where a politician is making a claim. Just highlight the claim and click the "Mandar a FactoPolitico" bookmarklet.
+					</p>
+					<p>
+						We will then start tracking this statement for truth &amp; over time, provide evidence to prove or disprove the claim. It's that simple.
+					</p>
+				</div>
+			</div>
+			
+
+			<hr>
+
+
+			<div class="row">
+				
+			</div><!-- ewhat? -->
+
+			<hr>
+
+			<footer>
+				<p>&copy; Company 2014</p>
+			</footer>
+		</div> <!-- /container -->
+
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
