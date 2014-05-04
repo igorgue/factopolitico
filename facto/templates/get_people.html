@@ -188,22 +188,15 @@
 					<h2 class="oswald">Hechos desde categoria</h3>
 					<hr/>
 					<ul class="list-group">
-					  <li class="list-group-item">
-					    <span class="badge">104</span>
-					    Economy
-					  </li>
-					  <li class="list-group-item">
-					    <span class="badge">1094</span>
-					    Drugs
-					  </li>
-					  <li class="list-group-item">
-					    <span class="badge">88</span>
-					    Elections
-					  </li>
-					  <li class="list-group-item">
-					    <span class="badge">2</span>
-					    Healthcare
-					  </li>
+
+            {% for category in person.categories %}
+              <li class="list-group-item">
+                <span class="badge">{{ category.facts_count }}</span>
+                <a href="{% url "get_category" category.slug %}">
+                  {{ category.title }}
+                </a>
+              </li>
+            {% endfor %}
 					</ul>
 				</div>
 				<div class="col-md-8">
@@ -211,13 +204,13 @@
 					<hr style="border-top-color:#ddd !important;"/>
 					<div style="border-left: 5px solid #ccc; background-color: #efefef; padding: 20px 20px 5px 20px; margin: 20px 0;">
 						<blockquote>
-						  <p>
-						  	<span class="label label-success">Verdad!</span>
-						  	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-						  </p>
-						  <footer>
-						  	Nicolas Maduro en <cite title="Source Title">Source Title</cite> ( <a href="#">Ver mas</a> )
-						  </footer>
+              <p>
+              <span class="label label-{{ person.lastest_fact.status_css_class }}">{{ person.lastest_fact.get_status_display }}</span>
+                {{ person.lastest_fact.quote }}
+              </p>
+              <footer>
+                {{ person.name }}{% if person.lastest_fact.source %} en <cite title="Source Title">{{ person.lastest_fact.source.title }}</cite> {% endif %} (<a href="{% url "get_fact" person.slug person.lastest_fact.slug %}">Ver mas</a>)
+              </footer>
 						</blockquote>
 					</div>
 

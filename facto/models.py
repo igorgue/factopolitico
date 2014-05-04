@@ -31,6 +31,12 @@ class Person(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False, blank=False, null=False)
     updated_at = models.DateTimeField(auto_now_add=True, auto_now=True, blank=False, null=False)
 
+    def lastest_fact(self):
+        return Fact.objects.filter(person=self).order_by('-created_at')[0]
+
+    def facts(self):
+        return Fact.objects.filter(person=self)
+
     def facts_breakdown(self):
         investigating = Fact.objects.filter(person=self, status=Fact.STATUS[0][0]).count()
         almost_true = Fact.objects.filter(person=self, status=Fact.STATUS[1][0]).count()
@@ -38,7 +44,6 @@ class Person(models.Model):
         half_true = Fact.objects.filter(person=self, status=Fact.STATUS[3][0]).count()
         false = Fact.objects.filter(person=self, status=Fact.STATUS[4][0]).count()
         mostly_false = Fact.objects.filter(person=self, status=Fact.STATUS[5][0]).count()
-        pants_on_fire = Fact.objects.filter(person=self, status=Fact.STATUS[6][0]).count()
 
         breakdown = {
             'investigating': "{:.0%}".format(float(investigating) / float(self.facts_count())),
@@ -46,14 +51,16 @@ class Person(models.Model):
             'true': "{:.0%}".format(float(true) / float(self.facts_count())),
             'half_true': "{:.0%}".format(float(half_true) / float(self.facts_count())),
             'false': "{:.0%}".format(float(false) / float(self.facts_count())),
-            'mostly_false': "{:.0%}".format(float(mostly_false) / float(self.facts_count())),
-            'pants_on_fire': "{:.0%}".format(float(pants_on_fire) / float(self.facts_count())),
+            'mostly_false': "{:.0%}".format(float(mostly_false) / float(self.facts_count()))
         }
 
         return breakdown
 
     def facts_count(self):
-        return Fact.objects.filter(person=self).count()
+        return self.facts().count()
+
+    def categories(self):
+        return Category.objects.filter(id__in=list(set([fact.category.id for fact in self.facts()])))
 
     def __unicode__(self):
         return self.name
@@ -68,6 +75,9 @@ class Category(models.Model):
     def facts_count(self):
         return Fact.objects.filter(category=self).count()
 
+    def facts_count_by_person(self, person):
+        return Fact.objects.filter(category=self, person=person).count()
+
     def __unicode__(self):
         return self.title
 
@@ -77,9 +87,8 @@ class Fact(models.Model):
         ('almost-true', 'Casi Verdad'),
         ('true', 'Verdad'),
         ('half-true', 'Media Verdad'),
-        ('false', 'Falso'),
-        ('mostly-false', 'Sobretodo Falso'),
-        ('pants-on-fire', 'Tremenda Mentira!'),
+        ('mostly-false', 'Medio Falso'),
+        ('false', 'Falso!'),
     )
 
     title = models.CharField(max_length=255, blank=False)
@@ -97,6 +106,20 @@ class Fact(models.Model):
     slug = models.SlugField(max_length=255, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False, blank=False, null=False)
     updated_at = models.DateTimeField(auto_now_add=True, auto_now=True, blank=False, null=False)
+
+    def status_css_class(self):
+        if self.status == 'investigating':
+            return 'default'
+        elif self.status == 'false':
+            return 'danger'
+        elif self.status == 'mostly-false':
+            return 'danger'
+        elif self.status == 'half-true':
+            return 'primary'
+        elif self.status == 'almost-true':
+            return 'info'
+        elif self.status == 'true':
+            return 'success'
 
     def country_image_url(self):
         return self.person.country.picture_url
