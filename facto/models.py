@@ -163,7 +163,7 @@ class Fact(models.Model):
     def save(self, *args, **kwargs):
         if self.slug == '':
             x = random.randint(1, 99999999999)
-            self.slug = slugify(self.title+' '+str(x))
+            self.slug = slugify(u"%s" % self.title+' '+str(x))
 
         super(Fact, self).save(*args, **kwargs)
 
