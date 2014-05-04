@@ -18,14 +18,22 @@ class Country(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False, blank=False, null=False)
     updated_at = models.DateTimeField(auto_now_add=True, auto_now=True, blank=False, null=False)
 
+    def latest_fact(self):
+        facts = Fact.objects.filter(person__country=self).order_by('-created_at')
+
+        if facts.count() > 0:
+            return facts[0]
+        else:
+            return None
+
     def facts_by_country(self):
         return Fact.objects.filter(person__country=self)
 
     def facts_count(self):
         return self.facts_by_country().count()
 
-    def persons(self):
-        return People.objects.filter(country=self)
+    def people(self):
+        return Person.objects.filter(country=self)
 
     def __unicode__(self):
         return self.name
@@ -51,8 +59,12 @@ class Person(models.Model):
     def more_facts_in_profile(self):
         return Fact.objects.filter(person=self).order_by('-created_at')[1:]
 
-    def lastest_fact(self):
-        return Fact.objects.filter(person=self).order_by('-created_at')[0]
+    def latest_fact(self):
+        facts = Fact.objects.filter(person=self).order_by('-created_at')
+        if facts.count() > 0:
+            return facts[0]
+        else:
+            return None
 
     def facts(self):
         return Fact.objects.filter(person=self)
