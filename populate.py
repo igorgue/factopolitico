@@ -11,7 +11,6 @@ user = User.objects.get(id=1)
 
 f = open('/Users/igor/Downloads/factos.csv', 'rb')
 Fact.objects.all().delete()
-Source.objects.all().delete()
 
 reader = csv.reader(f)
 next(reader) # skip header
@@ -30,29 +29,50 @@ for row in reader:
     fact.category = category
     fact.status = row[8].lower()
     fact.content = row[9].decode('utf-8')
+    fact.image_url = row[12]
 
     fact.save()
 
     if row[4] != '':
-        s = Source()
+        try:
+            s = Source.objects.get(url=row[4])
+        except:
+            s = Source()
+            s.url = row[4]
+
         s.fact = fact
         s.url = row[4]
         s.save()
 
     if row[5] != '':
-        s = Source()
+        try:
+            s = Source.objects.get(url=row[5])
+        except:
+            s = Source()
+            s.url = row[5]
+
         s.fact = fact
         s.url = row[5]
         s.save()
 
     if row[6] != '':
-        s = Source()
+        try:
+            s = Source.objects.get(url=row[6])
+        except:
+            s = Source()
+            s.url = row[6]
+
         s.fact = fact
         s.url = row[6]
         s.save()
 
     if row[7] != '':
-        s = Source()
+        try:
+            s = Source.objects.get(url=row[7])
+        except:
+            s = Source()
+            s.url = row[7]
+
         s.fact = fact
         s.url = row[7]
         s.save()
