@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 		<!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
 
-    <title>{% block title %}Facto Politico{% endblock %}</title>
+    <title>{% block title %}Facto Politico{% endblock %} - FactoPolitico.co</title>
 
 		<!-- Bootstrap core CSS -->
 		<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
@@ -33,11 +33,18 @@
 
 	<body style="padding-top: 50px;">
 		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-          <a class="navbar-brand" href="/">Facto Politico</a>
-				</div>
-			</div>
+		<div class="container">
+	        <div class="navbar-header">
+	          <a class="navbar-brand" href="/">Facto Politico</a>
+	        </div>
+	        <div class="collapse navbar-collapse">
+	          <ul class="nav navbar-nav">
+	            <li><a href="/">Portada</a></li>
+	            <li><a href="/bookmarklet">Agarrar el bookmarklet</a></li>
+	            <li><a href="mailto:info@factopolitico.co">Contacto</a></li>
+	          </ul>
+	        </div><!--/.nav-collapse -->
+	      </div>
 		</div>
     {% block jumbotron %}
     {% endblock %}

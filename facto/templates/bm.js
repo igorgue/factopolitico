@@ -42,9 +42,10 @@ $('#fpbm_box form').submit(function(e){
 		error = true;
 	}
 	if (error) { return false; }
-	form['source_url'] = window.location.toString();
+	form += '&source_url='+window.location.toString();
+	console.log(form);
 	$.ajax({
-	  url: '//localhost:8000/facts/save/',
+	  url: '//factopolitico.co/facts/save/',
 	  dataType: 'jsonp',
 	  data: form,
 	  type:'GET',

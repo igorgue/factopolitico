@@ -18,6 +18,7 @@ urlpatterns = patterns('',
 
     url(r'^categories/(?P<slug>[\w-]+)/$', 'facto.views.get_category', name='get_category'),
 
+    url(r'^bookmarklet$', 'facto.views.bookmarklet_page', name='bookmarklet_page'),
     url(r'^bm.js$', 'facto.views.show_bookmarklet', name='show_bookmarklet'),
     url(r'^facts/save/$', 'facto.views.save_bm_fact', name='save_bm_fact'),
 

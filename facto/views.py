@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponse
 
-from facto.models import Country, Fact, Person, Category
+from facto.models import Country, Fact, Person, Category, Source
 
 def home(request):
     # Summaries
@@ -115,17 +115,19 @@ def save_bm_fact(request):
     person = get_object_or_404(Person, id=p_id)
     category = get_object_or_404(Category, id=c_id)
     response_data = {}
-    f = Fact.objects.create(title='BMADD', quote=request.GET['quote'], person=person, category=category)
-    # try:
-
-    #     # url=
-    # except:
-    #     response_data['status'] = 'error'
-    # else:
-    response_data['status'] = 'ok'
+    try:
+        f = Fact.objects.create(title='BMADD', quote=request.GET['quote'], person=person, category=category)
+        Source.objects.create(url=request.GET['source_url'], fact=f)
+    except:
+        response_data['status'] = 'error'
+    else:
+        response_data['status'] = 'ok'
     return HttpResponse("%s(%s)" % (request.GET['callback'], json.dumps(response_data)), content_type="application/json")
 
 def show_bookmarklet(request):
     people = Person.objects.all()
     catz = Category.objects.all()
     return render_to_response('bm.js', locals(), context_instance=RequestContext(request))
+
+def bookmarklet_page(request):
+    return render_to_response('bookmarklet.html', locals(), context_instance=RequestContext(request))
