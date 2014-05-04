@@ -190,13 +190,13 @@
 
           {% for fact in recent_facts %}
             <li class="media">
-              <a class="pull-left" href="#">
+              <a class="pull-left" href="{% url "get_fact" fact.person.slug fact.slug %}">
                 <img class="media-object" src="{{ fact.image_url }}" alt="..." height="100" style="width:100px">
               </a>
               <div class="media-body">
                 <h4 class="media-heading">
                   <img src="{% static fact.country_image_url %}" height="15"/>
-                  {{ fact.title }}
+                  <a href="{% url "get_fact" fact.person.slug fact.slug %}">{{ fact.title }}</a>
                 </h4>
                 "{{ fact.quote }}"
                 <br/>
