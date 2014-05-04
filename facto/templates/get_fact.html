@@ -179,17 +179,19 @@
           <!-- sorry -->
           <br><br> 
 
+          {% if fact.user %}
           <div class="well well-sm">
             <div class="media">
               <a class="pull-left" href="#">
-                <img class="media-object" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/p48x48/1947365_10152182147634088_202079617_t.jpg" alt="...">
+                <img class="media-object" src="{{ fact.user.profile.profile_pic_url }}" alt="..." height="48">
               </a>
               <div class="media-body">
-                <h4 class="media-heading">Elisa Reyes</h4>
-                Contributor blurb goes here.
+                <h4 class="media-heading">{{ fact.user.get_full_name }}</h4>
+                {{ fact.user.profile.blur }}
               </div>
             </div>
           </div><!-- end of .well-->
+        {% endif %}
 
 					<br/>
 					<br/>

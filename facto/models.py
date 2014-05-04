@@ -4,6 +4,11 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, related_name="profile")
+    profile_pic_url = models.URLField(max_length=255, blank=True)
+    blur = models.TextField(blank=True)
+
 class Country(models.Model):
     name = models.CharField(max_length=255, blank=False)
     #picture = models.ImageField(upload_to='public/images/upload', height_field=80, width_field=80)#, max_length=100)
