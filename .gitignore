@@ -1,4 +1,6 @@
+venv
 *.swp
 *.pyc
 *.mp4
 .DS_Store
+staticfiles
