@@ -13,6 +13,9 @@ class Country(models.Model):
     def facts_by_country(self):
         return Fact.objects.filter(person__country=self)
 
+    def facts_count(self):
+        return self.facts_by_country().count()
+
     def persons(self):
         return People.objects.filter(country=self)
 
@@ -85,8 +88,7 @@ class Category(models.Model):
         return Fact.objects.filter(category=self, person=person).count()
 
     def countries(self):
-        countries_ids = list(set([fact.person.country.id for fact in self.facts()]))
-        return Country.objects.filter(id__in=countries_ids)
+        return Country.objects.filter(id__in=list(set([fact.person.country.id for fact in self.facts()])))
 
     def __unicode__(self):
         return self.title

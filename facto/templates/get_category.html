@@ -143,10 +143,10 @@
 					<h2 class="oswald">Hechos desde pais</h3>
 					<hr/>
 					<ul class="list-group">
-            {% for country in countries %}
+            {% for country in category.countries %}
               <li class="list-group-item">
-                <span class="badge">1</span>
-                <img src="static/images/mexico.png" height="10"/> Mexico
+                <span class="badge">{{ country.facts_count}}</span>
+                <img src="{{ country.picture_url }}" height="10"/> {{ country.name }}
               </li>
             {% endfor %}
 					</ul>
