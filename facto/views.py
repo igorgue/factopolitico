@@ -116,8 +116,8 @@ def save_bm_fact(request):
     category = get_object_or_404(Category, id=c_id)
     response_data = {}
     try:
-        f = Fact.objects.create(title='BMADD', quote=request.GET['quote'], person=person, category=category)
-        Source.objects.create(url=request.GET['source_url'], fact=f)
+        f = Fact.objects.create(title=request.GET['quote'], quote=request.GET['quote'], person=person, category=category)
+        Source.objects.create(url=request.GET['source_url'], fact=f, title="bm add %s" % person.name)
     except:
         response_data['status'] = 'error'
     else:
