@@ -106,7 +106,8 @@ def save_bm_fact(request):
         Fact.objects.create(title='BMADD', quote=request.GET['quote'], person=person, category=category)
     except:
         response_data['status'] = 'error'
-    response_data['status'] = 'ok'
+    else:
+        response_data['status'] = 'ok'
     return HttpResponse("%s(%s)" % (request.GET['callback'], json.dumps(response_data)), content_type="application/json")
 
 def show_bookmarklet(request):
