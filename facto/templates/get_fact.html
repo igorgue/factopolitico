@@ -95,8 +95,8 @@
 				background-repeat: no-repeat; 
 			}
 
-			.quote-head.mexico{
-				background-image:url(https://dl.dropboxusercontent.com/sh/dpspzisengzho6k/arHsLXGxKV/mexico-president-orders-probe-into-restaurant-ruckus-1367357441-5486.jpg?token_hash=AAFIv-4HUEHRs9nR5J1X9Gd-JHNRWZhnfcv_VPaTu2e8Ng);
+      .quote-head.{{ fact.person.country.slug }}{
+        background-image:url({{ fact.person.profile_pic_url }});
 			}
 
 			.quote-head{
@@ -110,8 +110,8 @@
 				background-repeat: no-repeat; 
 			}
 
-			.person.mexico{
-				background-image:url(https://dl.dropboxusercontent.com/sh/dpspzisengzho6k/arHsLXGxKV/mexico-president-orders-probe-into-restaurant-ruckus-1367357441-5486.jpg?token_hash=AAFIv-4HUEHRs9nR5J1X9Gd-JHNRWZhnfcv_VPaTu2e8Ng);
+			.person.{{ fact.person.country.slug }}{
+				background-image:url({{ fact.person.profile_pic_url }});
 			}
 		</style>
   {% endblock %}
@@ -122,15 +122,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-1">
-						<div class="quote-head mexico"></div>
+            <div class="quote-head {{ fact.person.country.slug }}"></div>
 					</div>
 					<div class="col-md-11">
 						<blockquote style="margin-top:0px;background-color:#F9CECE;color:#333;border-left: 5px solid #B51D1D;">
 							<p>
-								<span style="font-size: 36px;">&ldquo;</span> &nbsp; ...vienen a concretar beneficios para un sector de la población que no tiene seguridad social, que no tiene la cobertura ni del Seguro Social, ni del Seguro Popular, ni los beneficios de contar con un apoyo, especialmente en la edad adulta, cuando cada vez es más difícil tener un empleo. 
+              <span style="font-size: 36px;">&ldquo;</span> &nbsp; {{ fact.quote }} 
 							</p>
 							<footer>
-								Enrique Peña Nieto en <cite title="Source Title">Decembre 01, 2012</cite> ( <a href="http://en.presidencia.gob.mx/articles-press/i-am-determined-to-drive-mexicos-transformation-enrique-pena-nieto/">fuente</a> )
+                {{ fact.person.name }} en <cite title="Source Title">{{ fact.created_at|date }} </cite>{% if fact.source %} ( <a href="{{ fact.source.url }}">{{ fact.source.title }}</a> ){% endif %}
 							</footer>
 						</blockquote>
 					</div>
@@ -146,40 +146,39 @@
 				<div class="col-md-3">
 					<h2 class="oswald">Es verdad?</h3>
 					<hr/>
-					<h2><span class="label label-success">Un Poquito Verdad</span></h2>
+          <h2><span class="label label-{{ fact.status_css_class }}">{{ fact.get_status_display }}</span></h2>
 					<br/>
 					<br/>
 					<h2 class="oswald">Categoria</h3>
 					<hr/>
 					<ul class="list-group">
 					  <li class="list-group-item">
-					    <span class="badge">1 de 104</span>
-					    Economy
+            <span class="badge">1 de {{ fact.category.facts_count }}</span>
+              {{ fact.category.title }}
 					  </li>
 					</ul>
 					<br/>
 					<br/>
 					<h2 class="oswald">Pais</h3>
 					<hr/>
-					<img src="static/images/mexico.png" />
+          <img src="{{ fact.person.country.picture_url }}" />
 					<br/>
 					<br/>
 					<h2 class="oswald">Politico</h3>
 					<hr/>
 					<div class="text-left">
-						<div class="person mexico"></div>
-						<p>Enrique Pena Nieto</p>
+            <div class="person {{ fact.person.country.slug }}"></div>
+            <p>{{ fact.person.name }}</p>
 					</div>
 				</div>
 				<div class="col-md-9">
 					<h2 class="oswald">Explicación</h2>
 					<hr style="border-top-color:#ddd !important;"/>
-					<p style="font-size:18px;">
-						Food truck locavore PBR&B, craft beer actually Odd Future viral Etsy twee flannel American Apparel next level Bushwick cray. Cornhole Shoreditch sriracha bicycle rights narwhal, organic Godard small batch roof party Thundercats. Cornhole fixie bespoke, gluten-free lomo selfies Odd Future seitan tattooed Marfa. Wes Anderson before they sold out blog, Pinterest gluten-free beard art party. Sustainable organic scenester McSweeney's photo booth hoodie. Locavore readymade pork belly, hella Pitchfork keffiyeh slow-carb. Cardigan YOLO kitsch Wes Anderson Intelligentsia, Godard try-hard High Life whatever readymade.
-					</p>
-					<p>
-						Skateboard PBR&B gluten-free deep v gastropub seitan, selvage single-origin coffee ethical Bushwick kale chips. Tote bag chia church-key, paleo food truck shabby chic XOXO. Direct trade sriracha McSweeney's, salvia Etsy ethnic retro fap 3 wolf moon. +1 authentic raw denim, gluten-free you probably haven't heard of them disrupt 3 wolf moon cardigan lomo crucifix PBR. Selfies four loko twee quinoa mumblecore, cliche Truffaut literally. Wolf fap fashion axe tousled American Apparel food truck, squid banjo twee sustainable. Shabby chic normcore cardigan, kogi Pinterest wolf art party Neutra food truck Shoreditch +1 leggings Vice crucifix fingerstache.
-					</p>
+          {{ fact.content|safe }}
+
+          <!-- sorry -->
+          <br><br> 
+
 					<div class="well well-sm">
 						<div class="media">
 							<a class="pull-left" href="#">

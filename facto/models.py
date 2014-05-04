@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.text import slugify
 
 class Country(models.Model):
     name = models.CharField(max_length=255, blank=False)
@@ -21,6 +22,12 @@ class Country(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if self.slug == '':
+            self.slug = slugify(self.name)
+
+        super(Country, self).save(*args, **kwargs)
 
 class Person(models.Model):
     name = models.CharField(max_length=255, blank=False)
@@ -70,6 +77,12 @@ class Person(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if self.slug == '':
+            self.slug = slugify(self.name)
+
+        super(Person, self).save(*args, **kwargs)
 
 class Category(models.Model):
     title = models.CharField(max_length=255, blank=False)
@@ -138,6 +151,12 @@ class Fact(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if self.slug == '':
+            self.slug = slugify(self.name)
+
+        super(Fact, self).save(*args, **kwargs)
 
     @classmethod
     def recent_facts(cls, number=5):
