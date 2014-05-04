@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Agarrar el bookmarklet{% endblock %}
+{% block jumbotron %}
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<div class="jumbotron" style="background-color:#FF3030;color: #fff;font-family: 'Oswald'; padding-bottom: 0px !important;">
+		<div class="container">
+			<div class="pull-left" style="width:710px;">
+				<h1 style="text-shadow:0 0 3px rgba(0,0,0,.8); font-size: 58px;">Enviar reclamos a FactoPolitico</h1>
+				<p>Utilice nuestro bookmarklet de Firefox, Chrome y Safari para enviar datos al equipo FactoPolitico para su verificación.</p> 
+			</div>
+			<img src="static/images/bookmarklet-image.png" class="pull-right" style="width: 400px"/>
+		</div>
+	</div>
+{% endblock %}
+{% block content %}
+	<div class="container">
+		<!-- Example row of columns -->
+		<div class="row">
+			<div class="col-md-3">
+				<h2 class="oswald">Bookmarklet</h3>
+				<hr/>
+				<a href="javascript:var $$$fpf=document.createElement('script');$$$fpf.setAttribute('src','http://factopolitico.co/bm.js');$$$fpf.setAttribute('type','text/javascript');document.getElementsByTagName('head')%5B0%5D.appendChild($$$fpf);" class="btn btn-default form-control">Enviar FactoPolitico</a>
+				<br/>
+				<br/>
+				<p>
+					Arrastre el botón arriba que dice "Enviar FactoPolitico" a tu barra de marcadores.
+				</p>
+			</div>
+			<div class="col-md-9">
+				<h2 class="oswald">Porque?</h2>
+				<hr style="border-top-color:#ddd !important;"/>
+				<p style="font-size:18px;">
+					Debido a que los líderes de América Latina deben rendir cuentas. Ya que ustedes merecen saber cuándo la gente se acogió están diciendo la verdad o mintiendo en la cara. Debido a que un gobierno abierto y transparente es mejor para todos.
+				</p>
+				<p>
+					Va a ser una parte de un amplio movimiento de los continentes a dejar los políticos saben que no pueden utilizar la mentira como parte de su plataforma de campaña. Todo lo que necesitas hacer es instalar el bookmarklet - a continuación, cuando ves un sitio web donde un político está haciendo un reclamo. Sólo tienes que seleccionar el reclamo y haga clic en el bookmarklet "Enviar FactoPolitico".
+				</p>
+				<p>
+					A continuación, se iniciará el seguimiento de esta declaración de la verdad y con el tiempo, proporcionar evidencia para probar o refutar la reclamación. Es así de simple.
+				</p>
+			</div>
+		</div>
+	</div> <!-- /container -->
+{% endblock %}
