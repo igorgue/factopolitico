@@ -130,18 +130,25 @@
         <div class="row francois">
 
           {% for country in countries %}
+            {% if countries.count == 10 and forloop.counter == 5 %}
+              <div id="more-countries" style="display:none;">
+            {% endif %}
             <a href="{% url "get_country" country.slug %}">
               <div class="col-md-6">
                 <div class="country {{ country.slug }}"></div>
                 <p><small>{{ country.name }}</small></p>
               </div>
             </a>
+            {% if countries.count == 10 and forloop.counter == 10 %}
+              </div>
+            {% endif %}
           {% endfor %}
-
-          <div class="col-md-12 text-center">
-            <br/>
-            <a href="#" class="btn btn-default form-control">Ver todos los paises</a>
-          </div>
+          {% if countries.count == 10 %}
+            <div class="col-md-12 text-center">
+              <br/>
+              <a href="javascript:var txt = $('#more-countries').is(':visible') ? 'Ver todo los paises' :'Ver menos paises'; $('#country-toggle').text(txt); $('#more-countries').slideToggle();" class="btn btn-default form-control" id="country-toggle">Ver todo los paises</a>
+            </div>
+          {% endif %}
         </div>
       </div>
       <div class="col-md-2">
@@ -163,18 +170,25 @@
         <div class="row francois">
 
           {% for person in people %}
+            {% if people.count == 10 and forloop.counter == 5 %}
+              <div id="more-people" style="display:none;">
+            {% endif %}
             <a href="{% url "get_people" person.slug %}">
               <div class="col-md-6 text-center">
                 <div class="person" style="background-image:url({{ person.profile_pic_url}})"></div>
                 <p><small>{{ person.name }}</small></p>
               </div>
             </a>
+            {% if people.count == 10 and forloop.counter == 10 %}
+              </div>
+            {% endif %}
           {% endfor %}
-
-          <div class="col-md-12 text-center">
-            <br/>
-            <a href="#" class="btn btn-default form-control">Ver todos los politicos</a>
-          </div>
+          {% if people.count == 10 %}
+            <div class="col-md-12 text-center">
+              <br/>
+              <a href="javascript:var txt = $('#more-people').is(':visible') ? 'Ver todo los paises' :'Ver menos paises'; $('#politic-toggle').text(txt); $('#more-people').slideToggle();" class="btn btn-default form-control" id="politic-toggle">Ver todos los politicos</a>
+            </div>
+          {% endif %}
         </div>
       </div>
     </div> <!-- end of .row -->
