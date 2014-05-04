@@ -237,10 +237,10 @@
           {% if more_facts.has_other_pages %}
             <ul class="pager">
               {% if more_facts.has_previous %}
-                <li class="previous"><a href="{{ request.get_full_path }}?page={{ more_facts.previous_page_number }}">&larr;</a></li>
+                <li class="previous"><a href="{{ request.path }}?page={{ more_facts.previous_page_number }}">&larr;</a></li>
               {% endif %}
               {% if more_facts.has_next %}
-                <li class="next"><a href="{{ request.get_full_path }}?page={{ more_facts.next_page_number }}">&rarr;</a></li>
+                <li class="next"><a href="{{ request.path }}?page={{ more_facts.next_page_number }}">&rarr;</a></li>
               {% endif %}
             </ul>
           {% endif %}

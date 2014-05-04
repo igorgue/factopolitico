@@ -16,21 +16,6 @@ def home(request):
 
     return render_to_response('home.html', locals(), context_instance=RequestContext(request))
 
-#def countries(request):
-    #countries_list = Country.objects.all()
-    #paginator = Paginator(countries_list, 25)
-
-    #page = request.GET.get('page')
-
-    #try:
-        #countries = paginator.page(page)
-    #except PageNotAnInteger:
-        #countries = paginator.page(1)
-    #except EmptyPage:
-        #countries = paginator.page(paginator.num_pages)
-
-    #return render_to_response('countries.html', locals(), context_instance=RequestContext(request))
-
 def get_country(request, slug):
     country = get_object_or_404(Country, slug=slug)
     return render_to_response('get_country.html', locals(), context_instance=RequestContext(request))
@@ -91,11 +76,19 @@ def recent_facts(request):
     recent_facts_by_date = Fact.recent_facts()
     return render_to_response('recent_facts.html', locals(), context_instance=RequestContext(request))
 
-def categories(request):
-    categories = Category.objects.all()
-    return render_to_response('categories.html', locals(), context_instance=RequestContext(request))
-
 def get_category(request, slug):
     category = get_object_or_404(Category, slug=slug)
-    return render_to_response('get_category.html', locals(), context_instance=RequestContext(request))
+    facts_list = category.facts()
 
+    paginator = Paginator(facts_list, 3)
+
+    page = request.GET.get('page')
+
+    try:
+        facts = paginator.page(page)
+    except PageNotAnInteger:
+        facts = paginator.page(1)
+    except EmptyPage:
+        facts = paginator.page(paginator.num_pages)
+
+    return render_to_response('get_category.html', locals(), context_instance=RequestContext(request))
