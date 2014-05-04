@@ -21,5 +21,8 @@ urlpatterns = patterns('',
     url(r'^categories/$', 'facto.views.categories', name='categories'),
     url(r'^categories/(?P<slug>[\w-]+)/$', 'facto.views.get_category', name='get_category'),
 
+    url(r'^bm.js$', 'facto.views.show_bookmarklet', name='show_bookmarklet'),
+    url(r'^facts/save/$', 'facto.views.save_bm_fact', name='save_bm_fact'),
+
     url(r'^admin/', include(admin.site.urls)),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
