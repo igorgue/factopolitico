@@ -16,20 +16,20 @@ def home(request):
 
     return render_to_response('home.html', locals(), context_instance=RequestContext(request))
 
-def countries(request):
-    countries_list = Country.objects.all()
-    paginator = Paginator(countries_list, 25)
+#def countries(request):
+    #countries_list = Country.objects.all()
+    #paginator = Paginator(countries_list, 25)
 
-    page = request.GET.get('page')
+    #page = request.GET.get('page')
 
-    try:
-        countries = paginator.page(page)
-    except PageNotAnInteger:
-        countries = paginator.page(1)
-    except EmptyPage:
-        countries = paginator.page(paginator.num_pages)
+    #try:
+        #countries = paginator.page(page)
+    #except PageNotAnInteger:
+        #countries = paginator.page(1)
+    #except EmptyPage:
+        #countries = paginator.page(paginator.num_pages)
 
-    return render_to_response('countries.html', locals(), context_instance=RequestContext(request))
+    #return render_to_response('countries.html', locals(), context_instance=RequestContext(request))
 
 def get_country(request, slug):
     country = get_object_or_404(Country, slug=slug)

@@ -8,7 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'facto.views.home', name='home'),
 
-    url(r'^countries/$', 'facto.views.countries', name='countries'),
+    #url(r'^countries/$', 'facto.views.countries', name='countries'),
     url(r'^countries/(?P<slug>[\w-]+)/$', 'facto.views.get_country', name='get_country'),
     url(r'^countries/(?P<slug>[\w-]+)/facts/$', 'facto.views.country_fact_list', name='country_fact_list'),
 
