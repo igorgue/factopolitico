@@ -151,7 +151,7 @@
 
             {% for person in country.people %}
               <div class="col-md-2 text-center">
-                <a href="{% url "get_people" person.slug %}"><div class="person {{ person.country.slug }}"></div></a>
+                <a href="{% url "get_people" person.slug %}"><div class="person {{ person.country.slug }}" style="background-image:url({{ person.profile_pic_url }});"></div></a>
                 <p><small><a href="{% url "get_people" person.slug %}">{{ person.name }}</a></small></p>
               </div>
             {% endfor %}
