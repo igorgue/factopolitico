@@ -133,48 +133,47 @@
   {% endblock %}
 
   {% block content %}
-    "{{ person.facts_breakdown }}"
 		<div class="container" id="promise-stats">
 			<!-- Example row of columns -->
 			<div class="row">
 				<div class="col-md-2 well well-sm text-center">
 					<h2>
-						23%
+            {{ person.facts_breakdown.true }}
 						<br/>
 						<span class="label label-success">Verdad!</span>
 					</h2>
 				</div>
 				<div class="col-md-2 well well-sm text-center">
 					<h2>
-						9%
+            {{ person.facts_breakdown.almost_true }}
 						<br/>
 						<span class="label label-info">Casi Verdad</span>
 					</h2>
 				</div>
 				<div class="col-md-2 well well-sm text-center">
 					<h2>
-						18%
+            {{ person.facts_breakdown.half_true }}
 						<br/>
 						<span class="label label-primary">Media Verdad</span>
 					</h2>
 				</div>
 				<div class="col-md-2 well well-sm text-center">
 					<h2>
-						15%
+            {{ person.facts_breakdown.mostly_false }}
 						<br/>
 						<span class="label label-danger">Media Falso</span>
 					</h2>
 				</div>
 				<div class="col-md-2 well well-sm text-center">
 					<h2>
-						13%
+            {{ person.facts_breakdown.false }}
 						<br/>
 						<span class="label label-danger">Falso!</span>
 					</h2>
 				</div>
 				<div class="col-md-2 well well-sm text-center">
 					<h2>
-						22%
+            {{ person.facts_breakdown.investigating }}
 						<br/>
 						<span class="label label-default">Investigando</span>
 					</h2>
