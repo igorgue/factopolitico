@@ -143,22 +143,12 @@
 					<h2 class="oswald">Hechos desde pais</h3>
 					<hr/>
 					<ul class="list-group">
-					  <li class="list-group-item">
-					    <span class="badge">1</span>
-					    <img src="static/images/mexico.png" height="10"/> Mexico
-					  </li>
-					  <li class="list-group-item">
-					    <span class="badge">4</span>
-					    <img src="static/images/venezuela.png" height="10"/> Venezuela
-					  </li>
-					  <li class="list-group-item">
-					    <span class="badge">8</span>
-					    <img src="static/images/peru.png" height="10"/> Peru
-					  </li>
-					  <li class="list-group-item">
-					    <span class="badge">2</span>
-					    <img src="static/images/cuba.png" height="10"/> Cuba
-					  </li>
+            {% for country in countries %}
+              <li class="list-group-item">
+                <span class="badge">1</span>
+                <img src="static/images/mexico.png" height="10"/> Mexico
+              </li>
+            {% endfor %}
 					</ul>
 				</div>
 				<div class="col-md-8">

@@ -18,7 +18,6 @@ urlpatterns = patterns('',
 
     url(r'^recent_facts/$', 'facto.views.recent_facts', name='recent_facts'),
 
-    url(r'^categories/$', 'facto.views.categories', name='categories'),
     url(r'^categories/(?P<slug>[\w-]+)/$', 'facto.views.get_category', name='get_category'),
 
     url(r'^admin/', include(admin.site.urls)),
