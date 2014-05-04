@@ -1,3 +1,5 @@
+import random
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
@@ -154,7 +156,8 @@ class Fact(models.Model):
 
     def save(self, *args, **kwargs):
         if self.slug == '':
-            self.slug = slugify(self.name)
+            x = random.randint(1, 99999999999)
+            self.slug = slugify(self.title+' '+x)
 
         super(Fact, self).save(*args, **kwargs)
 
