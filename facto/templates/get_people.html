@@ -1,5 +1,249 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
-{% block content %}
-  <h1 id="heading">Hello</h1>
-{% endblock %}
+{% load staticfiles %}
+  {% block extraheader %}
+		<style type="text/css">
+			#or{
+				background-color:#fff; 
+				height: 40px; 
+				padding: 10px 0px 25px; 
+				position: relative; 
+				left: -17px; 
+				top: -350px;
+				text-align: center;
+			}
+
+			.francois{
+				font-family:'Francois One';
+			}
+
+			.oswald{
+				font-family: 'Oswald';
+			}
+
+			.country{
+				overflow: hidden;
+				width: 110px;
+				height: 110px;
+				border-radius: 55px; 
+				border: 1px solid #ccc; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+
+			.country:hover, .person:hover{
+				border: 1px solid #333; 
+			}
+
+			.country.mexico{
+				background-image: url(images/mexico.png);
+				background-position: -45px -2px;
+			}
+
+			.country.colombia{
+				background-image:url(images/colombia.png);
+				background-position: -45px -10px;
+			}
+
+			.country.argentina{
+				background-image:url(images/argentina.png);
+				background-position: -45px -10px; 
+			}
+
+			.country.peru{
+				background-image:url(images/peru.png);
+				background-position: -46px -10px;
+			}
+
+			.country.venezuela{
+				background-image:url(images/venezuela.png);
+				background-position: -45px -10px; 
+			}
+
+			.country.chile{
+				background-image:url(images/chile.png);
+				background-position: -25px -2px;
+			}
+
+			.country.ecuador{
+				background-image:url(images/ecuador.png);
+				background-position: -45px -10px;
+			}
+
+			.country.cuba{
+				background-image:url(images/cuba.png);
+				background-position: -25px 2px;
+			}
+
+			.country.bolivia{
+				background-image:url(images/bolivia.png);
+				background-position: -45px -10px;
+			}
+
+			.country.guatemala{
+				background-image:url(images/guatemala.png);
+				background-position: -45px -2px;
+			}
+
+			.person{
+				overflow:hidden;
+				width: 110px;
+				height:110px;
+				border-radius:55px; 
+				border: 1px solid #ccc; 
+				background-position: -25px -2px; 
+				background-size: 150px; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+
+      .head.{{ person.country.slug }}{
+        background-image:url({{ person.profile_pic_url }});
+			}
+
+			.head{
+				overflow:hidden;
+				width: 210px;
+				height:210px;
+				border-radius:105px; 
+				border: 1px solid #ccc; 
+				background-position: -75px 0px; 
+				background-size: 305px; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+		</style>
+  {% endblock %}
+
+  {% block jumbotron %}
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron" style="background-color:#FF3030;color: #fff;font-family: 'Oswald';position: relative; height: 450px; overflow: hidden;">
+			<!--<div style="position:relative; left: -40px; top: -50px;">-->
+				<!--<video autoplay="" muted="" loop="">-->
+					<!--<source src="file://localhost/Users/austonbunsen/Sites/factopolitico/static/videos/mexico.mp4" type="video/mp4">-->
+					<!--Your browser does not support the video tag.-->
+				<!--</video>-->
+			<!--</div>-->
+			<div class="container text-center"  style="position:absolute; top: 10px;">
+        <div class="head {{ person.country.slug }}"></div>
+        <h1 style="text-shadow:0 0 3px rgba(0,0,0,.8);">{{ person.name }}</h1>
+        <p class="francois">({{ person.title }})</p>
+        <img src="{{ person.country.picture_url }}" height="50"/>
+			</div>
+		</div>
+  {% endblock %}
+
+  {% block content %}
+		<div class="container" id="promise-stats">
+			<!-- Example row of columns -->
+			<div class="row">
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+            {{ person.facts_breakdown.true }}
+						<br/>
+						<span class="label label-success">Verdad!</span>
+					</h2>
+				</div>
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+            {{ person.facts_breakdown.almost_true }}
+						<br/>
+						<span class="label label-info">Casi Verdad</span>
+					</h2>
+				</div>
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+            {{ person.facts_breakdown.half_true }}
+						<br/>
+						<span class="label label-primary">Media Verdad</span>
+					</h2>
+				</div>
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+            {{ person.facts_breakdown.mostly_false }}
+						<br/>
+						<span class="label label-danger">Media Falso</span>
+					</h2>
+				</div>
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+            {{ person.facts_breakdown.false }}
+						<br/>
+						<span class="label label-danger">Falso!</span>
+					</h2>
+				</div>
+				<div class="col-md-2 well well-sm text-center">
+					<h2>
+            {{ person.facts_breakdown.investigating }}
+						<br/>
+						<span class="label label-default">Investigando</span>
+					</h2>
+				</div>
+			</div>
+		</div> <!-- end of stats -->
+
+		<div class="container">
+			<!-- Example row of columns -->
+			<div class="row">
+				<div class="col-md-4">
+					<h2 class="oswald">Hechos desde categoria</h3>
+					<hr/>
+					<ul class="list-group">
+
+            {% for category in person.categories %}
+              <li class="list-group-item">
+                <span class="badge">{{ category.facts_count }}</span>
+                <a href="{% url "get_category" category.slug %}">
+                  {{ category.title }}
+                </a>
+              </li>
+            {% endfor %}
+					</ul>
+				</div>
+				<div class="col-md-8">
+					<h2 class="oswald">Hecho mas reciente</h2>
+					<hr style="border-top-color:#ddd !important;"/>
+					<div style="border-left: 5px solid #ccc; background-color: #efefef; padding: 20px 20px 5px 20px; margin: 20px 0;">
+						<blockquote>
+              <p>
+              <span class="label label-{{ person.lastest_fact.status_css_class }}">{{ person.lastest_fact.get_status_display }}</span>
+                {{ person.lastest_fact.quote }}
+              </p>
+              <footer>
+                {{ person.name }}{% if person.lastest_fact.source %} en <cite title="Source Title">{{ person.lastest_fact.source.title }}</cite> {% endif %} (<a href="{% url "get_fact" person.slug person.lastest_fact.slug %}">Ver mas</a>)
+              </footer>
+						</blockquote>
+					</div>
+
+					<h2 class="oswald">Otros hechos</h2>
+					<hr/>
+					<ul class="media-list">
+            {% for fact in more_facts.object_list %}
+              <li class="media">
+                <a class="pull-left" href="{% url "get_fact" person.slug fact.slug %}">
+                  <img class="media-object" src="{{ fact.image_url }}" alt="..." height="100" style="width:100px">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">
+                    {{ fact.title }}
+                  </h4>
+                  "{{ fact.quote}}"
+                  <br/>
+                  <span class="label label-{{ fact.status_css_class }}">{{ fact.get_status_display }}</span>
+                </div>
+                <hr/>
+              </li>
+            {% endfor %}
+					</ul>
+          {% if more_facts.has_other_pages %}
+            <ul class="pager">
+              {% if more_facts.has_previous %}
+                <li class="previous"><a href="{{ request.path }}?page={{ more_facts.previous_page_number }}">&larr;</a></li>
+              {% endif %}
+              {% if more_facts.has_next %}
+                <li class="next"><a href="{{ request.path }}?page={{ more_facts.next_page_number }}">&rarr;</a></li>
+              {% endif %}
+            </ul>
+          {% endif %}
+				</div>
+			</div>
+    {% endblock %}

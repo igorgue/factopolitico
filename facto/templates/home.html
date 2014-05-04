@@ -140,7 +140,7 @@
 
           <div class="col-md-12 text-center">
             <br/>
-            <a href="{% url "countries" %}" class="btn btn-default form-control">Ver todos los paises</a>
+            <a href="#" class="btn btn-default form-control">Ver todos los paises</a>
           </div>
         </div>
       </div>
@@ -173,7 +173,7 @@
 
           <div class="col-md-12 text-center">
             <br/>
-            <a href="{% url "people" %}" class="btn btn-default form-control">Ver todos los politicos</a>
+            <a href="#" class="btn btn-default form-control">Ver todos los politicos</a>
           </div>
         </div>
       </div>
@@ -190,17 +190,17 @@
 
           {% for fact in recent_facts %}
             <li class="media">
-              <a class="pull-left" href="#">
+              <a class="pull-left" href="{% url "get_fact" fact.person.slug fact.slug %}">
                 <img class="media-object" src="{{ fact.image_url }}" alt="..." height="100" style="width:100px">
               </a>
               <div class="media-body">
                 <h4 class="media-heading">
                   <img src="{% static fact.country_image_url %}" height="15"/>
-                  {{ fact.title }}
+                  <a href="{% url "get_fact" fact.person.slug fact.slug %}">{{ fact.title }}</a>
                 </h4>
                 "{{ fact.quote }}"
                 <br/>
-                <span class="label label-default">{{ fact.get_status_display }}</span>
+                <span class="label label-{{ fact.status_css_class }}">{{ fact.get_status_display }}</span>
               </div>
             </li>
           {% endfor %}

@@ -1,5 +1,188 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
-{% block content %}
-  <h1 id="heading">Hello</h1>
-{% endblock %}
+{% load staticfiles %}
+  {% block extraheader %}
+		<style type="text/css">
+			#or{
+				background-color:#fff; 
+				height: 40px; 
+				padding: 10px 0px 25px; 
+				position: relative; 
+				left: -17px; 
+				top: -350px;
+				text-align: center;
+			}
+
+			.francois{
+				font-family:'Francois One';
+			}
+
+			.oswald{
+				font-family: 'Oswald';
+			}
+
+			.country{
+				overflow: hidden;
+				width: 110px;
+				height: 110px;
+				border-radius: 55px; 
+				border: 1px solid #ccc; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+
+			.country:hover, .person:hover{
+				border: 1px solid #333; 
+			}
+
+			.country.mexico{
+				background-image: url(images/mexico.png);
+				background-position: -45px -2px;
+			}
+
+			.country.colombia{
+				background-image:url(images/colombia.png);
+				background-position: -45px -10px;
+			}
+
+			.country.argentina{
+				background-image:url(images/argentina.png);
+				background-position: -45px -10px; 
+			}
+
+			.country.peru{
+				background-image:url(images/peru.png);
+				background-position: -46px -10px;
+			}
+
+			.country.venezuela{
+				background-image:url(images/venezuela.png);
+				background-position: -45px -10px; 
+			}
+
+			.country.chile{
+				background-image:url(images/chile.png);
+				background-position: -25px -2px;
+			}
+
+			.country.ecuador{
+				background-image:url(images/ecuador.png);
+				background-position: -45px -10px;
+			}
+
+			.country.cuba{
+				background-image:url(images/cuba.png);
+				background-position: -25px 2px;
+			}
+
+			.country.bolivia{
+				background-image:url(images/bolivia.png);
+				background-position: -45px -10px;
+			}
+
+			.country.guatemala{
+				background-image:url(images/guatemala.png);
+				background-position: -45px -2px;
+			}
+
+			.person{
+				overflow:hidden;
+				width: 110px;
+				height:110px;
+				border-radius:55px; 
+				border: 1px solid #ccc; 
+				background-position: -25px -2px; 
+				background-size: 150px; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+
+			.head.mexico{
+				background-image:url(https://dl.dropboxusercontent.com/sh/dpspzisengzho6k/arHsLXGxKV/mexico-president-orders-probe-into-restaurant-ruckus-1367357441-5486.jpg?token_hash=AAFIv-4HUEHRs9nR5J1X9Gd-JHNRWZhnfcv_VPaTu2e8Ng);
+			}
+
+			.head{
+				overflow:hidden;
+				width: 210px;
+				height:210px;
+				border-radius:105px; 
+				border: 1px solid #ccc; 
+				background-position: -75px 0px; 
+				background-size: 305px; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+		</style>
+    {% endblock %}
+
+		<!-- Just for debugging purposes. Don't actually copy this line! -->
+		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+  {% block jumbotron %}
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron" style="background-color:#FF3030;color: #fff;font-family: 'Oswald';">
+			<div class="container text-center">
+        <h1 style="text-shadow:0 0 3px rgba(0,0,0,.8);">{{ category.title }}</h1>
+				<p class="francois">(Toda America Latina)</p> <!-- if country cats, then don't show this  -->
+				<!--<img src="static/images/mexico.png" height="50"/>-->
+			</div>
+		</div>
+  {% endblock %}
+
+  {% block content %}
+		<div class="container">
+			<!-- Example row of columns -->
+			<div class="row">
+				<div class="col-md-4">
+					<h2 class="oswald">Hechos desde pais</h3>
+					<hr/>
+					<ul class="list-group">
+            {% for country in category.countries %}
+              <li class="list-group-item">
+                <span class="badge">{{ country.facts_count}}</span>
+                <img src="{{ country.picture_url }}" height="10"/> {{ country.name }}
+              </li>
+            {% endfor %}
+					</ul>
+				</div>
+				<div class="col-md-8">
+					<h2 class="oswald">Hechos</h2>
+					<hr/>
+					<ul class="media-list">
+
+            {% for fact in facts.object_list %}
+              <li class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="{{ fact.image_url }}" alt="..." height="100" style="width:100px">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">
+                    <img src="{{ fact.person.country.picture_url }}" height="15"/>{{ fact.title }}
+                  </h4>
+                  "{{ fact.quote }}"
+                  <br/>
+                  <span class="label label-{{ fact.status_css_class }}">{{ fact.get_status_display }}</span>
+                </div>
+                <hr/>
+              </li>
+            {% endfor %}
+					</ul>
+          {% if facts.has_other_pages %}
+            <ul class="pager">
+              {% if facts.has_previous %}
+                <li class="previous"><a href="{{ request.path }}?page={{ facts.previous_page_number }}">&larr;</a></li>
+              {% endif %}
+              {% if facts.has_next %}
+                <li class="next"><a href="{{ request.path }}?page={{ facts.next_page_number }}">&rarr;</a></li>
+              {% endif %}
+            </ul>
+          {% endif %}
+				</div>
+			</div>
+    {% endblock %}

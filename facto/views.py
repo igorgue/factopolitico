@@ -12,27 +12,12 @@ def home(request):
     n = 4
     facts_n = 3
 
-    countries = Country.objects.all()[:n]
-    people = Person.objects.all()[:n]
+    countries = Country.objects.all()
+    people = Person.objects.all()
     recent_facts = Fact.recent_facts(facts_n)
     categories = Category.objects.all()[:n]
 
     return render_to_response('home.html', locals(), context_instance=RequestContext(request))
-
-def countries(request):
-    countries_list = Country.objects.all()
-    paginator = Paginator(countries_list, 25)
-
-    page = request.GET.get('page')
-
-    try:
-        countries = paginator.page(page)
-    except PageNotAnInteger:
-        countries = paginator.page(1)
-    except EmptyPage:
-        countries = paginator.page(paginator.num_pages)
-
-    return render_to_response('countries.html', locals(), context_instance=RequestContext(request))
 
 def get_country(request, slug):
     country = get_object_or_404(Country, slug=slug)
@@ -71,6 +56,19 @@ def people(request):
 
 def get_people(request, slug):
     person = get_object_or_404(Person, slug=slug)
+    more_facts_list = person.more_facts_in_profile()
+
+    paginator = Paginator(more_facts_list, 3)
+
+    page = request.GET.get('page')
+
+    try:
+        more_facts = paginator.page(page)
+    except PageNotAnInteger:
+        more_facts = paginator.page(1)
+    except EmptyPage:
+        more_facts = paginator.page(paginator.num_pages)
+
     return render_to_response('get_people.html', locals(), context_instance=RequestContext(request))
 
 def get_fact(request, people_slug, fact_slug):
@@ -81,14 +79,21 @@ def recent_facts(request):
     recent_facts_by_date = Fact.recent_facts()
     return render_to_response('recent_facts.html', locals(), context_instance=RequestContext(request))
 
-def categories(request):
-    categories = Category.all()
-    return render_to_response('categories.html', locals(), context_instance=RequestContext(request))
-
 def get_category(request, slug):
     category = get_object_or_404(Category, slug=slug)
-    return render_to_response('get_category.html', locals(), context_instance=RequestContext(request))
+    facts_list = category.facts()
 
+    paginator = Paginator(facts_list, 3)
+
+    page = request.GET.get('page')
+
+    try:
+        facts = paginator.page(page)
+    except PageNotAnInteger:
+        facts = paginator.page(1)
+    except EmptyPage:
+        facts = paginator.page(paginator.num_pages)
+    return render_to_response('get_category.html', locals(), context_instance=RequestContext(request))
 
 def save_bm_fact(request):
     p_id = request.GET['person']
