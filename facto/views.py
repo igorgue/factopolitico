@@ -21,6 +21,19 @@ def home(request):
 
 def get_country(request, slug):
     country = get_object_or_404(Country, slug=slug)
+
+    facts_list = country.facts_by_country()
+    paginator = Paginator(facts_list, 25)
+
+    page = request.GET.get('page')
+
+    try:
+        facts = paginator.page(page)
+    except PageNotAnInteger:
+        facts = paginator.page(1)
+    except EmptyPage:
+        facts = paginator.page(paginator.num_pages)
+
     return render_to_response('get_country.html', locals(), context_instance=RequestContext(request))
 
 def country_fact_list(request, slug):
@@ -104,7 +117,7 @@ def save_bm_fact(request):
     response_data = {}
     f = Fact.objects.create(title='BMADD', quote=request.GET['quote'], person=person, category=category)
     # try:
-        
+
     #     # url=
     # except:
     #     response_data['status'] = 'error'
