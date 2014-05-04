@@ -1,6 +1,9 @@
+import json
+
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+from django.http import HttpResponse
 
 from facto.models import Country, Fact, Person, Category
 
@@ -90,5 +93,24 @@ def get_category(request, slug):
         facts = paginator.page(1)
     except EmptyPage:
         facts = paginator.page(paginator.num_pages)
-
     return render_to_response('get_category.html', locals(), context_instance=RequestContext(request))
+
+def save_bm_fact(request):
+    p_id = request.GET['person']
+    c_id = request.GET['category']
+    # if not p_id or not c_id:
+    person = get_object_or_404(Person, id=p_id)
+    category = get_object_or_404(Category, id=c_id)
+    response_data = {}
+    try:
+        Fact.objects.create(title='BMADD', quote=request.GET['quote'], person=person, category=category)
+    except:
+        response_data['status'] = 'error'
+    else:
+        response_data['status'] = 'ok'
+    return HttpResponse("%s(%s)" % (request.GET['callback'], json.dumps(response_data)), content_type="application/json")
+
+def show_bookmarklet(request):
+    people = Person.objects.all()
+    catz = Category.objects.all()
+    return render_to_response('bm.js', locals(), context_instance=RequestContext(request))
