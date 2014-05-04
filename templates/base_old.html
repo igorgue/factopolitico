@@ -1,0 +1,103 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+		<!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
+
+    <title>{% block title %}Facto Politico{% endblock %} - FactoPolitico.co</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+
+		<!-- Google web fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Oswald|Francois+One' rel='stylesheet' type='text/css'>
+
+    {% block extraheader %}
+    {% endblock %}
+
+		<!-- Just for debugging purposes. Don't actually copy this line! -->
+		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body style="padding-top: 50px;">
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+	        <div class="navbar-header">
+	          <a class="navbar-brand" href="/">Facto Politico</a>
+	        </div>
+	        <div class="collapse navbar-collapse">
+	          <ul class="nav navbar-nav">
+	            <li><a href="/">Portada</a></li>
+	            <li><a href="/bookmarklet">Agarrar el bookmarklet</a></li>
+	            <li><a href="mailto:info@factopolitico.co">Contacto</a></li>
+	          </ul>
+	        </div><!--/.nav-collapse -->
+	      </div>
+		</div>
+    {% block jumbotron %}
+    {% endblock %}
+
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+
+      {% block footer %}
+        <hr>
+
+        <footer>
+          <p>&copy; Facto Politico 2014</p>
+        </footer>
+      {% endblock %}
+    </div> <!-- /container -->
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+		<script type="text/javascript">
+			var countries = ['Venezuela', 'Cuba', 'Peru', 'Colombia'];
+			var ll;
+			var cur_country;
+			function x(){
+				if (typeof cur_country == 'undefined' || cur_country == -1){
+					cur_country = countries[0];
+				}
+				else
+				{
+					xl = countries.indexOf(cur_country)+1;
+					cur_country = countries[xl];	
+				}
+				$('#country-swapper').text(cur_country);
+				if(cur_country == countries[countries.length-1]){
+					cur_country = -1;
+				}
+			}
+			$(document).ready(function(){
+				ll = setInterval(x, 3500);
+			});
+		</script>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-50593335-1', 'factopolitico.co');
+		  ga('send', 'pageview');
+		</script>
+	</body>
+</html>
+
