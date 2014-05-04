@@ -1,5 +1,217 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
-{% block content %}
-  <h1 id="heading">Hello</h1>
-{% endblock %}
+{% load staticfiles %}
+  {% block extraheader %}
+		<style type="text/css">
+			#or{
+				background-color:#fff; 
+				height: 40px; 
+				padding: 10px 0px 25px; 
+				position: relative; 
+				left: -17px; 
+				top: -350px;
+				text-align: center;
+			}
+
+			.francois{
+				font-family:'Francois One';
+			}
+
+			.oswald{
+				font-family: 'Oswald';
+			}
+
+			.country{
+				overflow: hidden;
+				width: 110px;
+				height: 110px;
+				border-radius: 55px; 
+				border: 1px solid #ccc; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+
+			.country:hover, .person:hover{
+				border: 1px solid #333; 
+			}
+
+			.country.mexico{
+				background-image: url(images/mexico.png);
+				background-position: -45px -2px;
+			}
+
+			.country.colombia{
+				background-image:url(images/colombia.png);
+				background-position: -45px -10px;
+			}
+
+			.country.argentina{
+				background-image:url(images/argentina.png);
+				background-position: -45px -10px; 
+			}
+
+			.country.peru{
+				background-image:url(images/peru.png);
+				background-position: -46px -10px;
+			}
+
+			.country.venezuela{
+				background-image:url(images/venezuela.png);
+				background-position: -45px -10px; 
+			}
+
+			.country.chile{
+				background-image:url(images/chile.png);
+				background-position: -25px -2px;
+			}
+
+			.country.ecuador{
+				background-image:url(images/ecuador.png);
+				background-position: -45px -10px;
+			}
+
+			.country.cuba{
+				background-image:url(images/cuba.png);
+				background-position: -25px 2px;
+			}
+
+			.country.bolivia{
+				background-image:url(images/bolivia.png);
+				background-position: -45px -10px;
+			}
+
+			.country.guatemala{
+				background-image:url(images/guatemala.png);
+				background-position: -45px -2px;
+			}
+
+			.person{
+				overflow:hidden;
+				width: 110px;
+				height:110px;
+				border-radius:55px; 
+				border: 1px solid #ccc; 
+				background-position: -25px -2px; 
+				background-size: 150px; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+
+			.head.mexico{
+				background-image:url(https://dl.dropboxusercontent.com/sh/dpspzisengzho6k/arHsLXGxKV/mexico-president-orders-probe-into-restaurant-ruckus-1367357441-5486.jpg?token_hash=AAFIv-4HUEHRs9nR5J1X9Gd-JHNRWZhnfcv_VPaTu2e8Ng);
+			}
+
+			.head{
+				overflow:hidden;
+				width: 210px;
+				height:210px;
+				border-radius:105px; 
+				border: 1px solid #ccc; 
+				background-position: -75px 0px; 
+				background-size: 305px; 
+				background-repeat: no-repeat; 
+				margin: 0 auto;
+			}
+		</style>
+    {% endblock %}
+
+		<!-- Just for debugging purposes. Don't actually copy this line! -->
+		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+  {% block jumbotron %}
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron" style="background-color:#FF3030;color: #fff;font-family: 'Oswald';">
+			<div class="container text-center">
+        <h1 style="text-shadow:0 0 3px rgba(0,0,0,.8);">{{ category.title }}</h1>
+				<p class="francois">(Toda America Latina)</p> <!-- if country cats, then don't show this  -->
+				<!--<img src="static/images/mexico.png" height="50"/>-->
+			</div>
+		</div>
+  {% endblock %}
+
+  {% block content %}
+		<div class="container">
+			<!-- Example row of columns -->
+			<div class="row">
+				<div class="col-md-4">
+					<h2 class="oswald">Hechos desde pais</h3>
+					<hr/>
+					<ul class="list-group">
+					  <li class="list-group-item">
+					    <span class="badge">1</span>
+					    <img src="static/images/mexico.png" height="10"/> Mexico
+					  </li>
+					  <li class="list-group-item">
+					    <span class="badge">4</span>
+					    <img src="static/images/venezuela.png" height="10"/> Venezuela
+					  </li>
+					  <li class="list-group-item">
+					    <span class="badge">8</span>
+					    <img src="static/images/peru.png" height="10"/> Peru
+					  </li>
+					  <li class="list-group-item">
+					    <span class="badge">2</span>
+					    <img src="static/images/cuba.png" height="10"/> Cuba
+					  </li>
+					</ul>
+				</div>
+				<div class="col-md-8">
+					<h2 class="oswald">Hechos</h2>
+					<hr/>
+					<ul class="media-list">
+					  <li class="media">
+					    <a class="pull-left" href="#">
+					      <img class="media-object" src="http://news.bbcimg.co.uk/media/images/74544000/jpg/_74544165_3778269e-bf30-4b52-92af-9237a0bdd9f3.jpg" alt="..." height="100" style="width:100px">
+					    </a>
+					    <div class="media-body">
+					      <h4 class="media-heading">
+					      	<img src="static/images/cuba.png" height="15"/> Guacamole is the best food for you
+					      </h4>
+					      "by the end of the year, we will be choking off and overcoming (...) inflation"
+					      <br/>
+					      <span class="label label-default">investigando</span>
+					    </div>
+					    <hr/>
+					  </li>
+					  <li class="media">
+					    <a class="pull-left" href="#">
+					      <img class="media-object" src="http://thecubaneconomy.com/wp-content/uploads/2012/06/cuba-computer.jpg" alt="..." height="100" style="width:100px">
+					    </a>
+					    <div class="media-body">
+					      <h4 class="media-heading">
+					      	<img src="static/images/mexico.png" height="15"/> Burritos are not real in mexico
+					      </h4>
+					      "los computadores son bueno"
+					      <br/>
+					      <span class="label label-success">verdad!</span>
+					    </div>
+					    <hr/>
+					  </li>
+					  <li class="media">
+					    <a class="pull-left" href="#">
+					      <img class="media-object" src="https://external-mia.xx.fbcdn.net/safe_image.php?d=AQDpjEQHDIiHqnLk&w=116&h=116&url=http%3A%2F%2Fstatic4.businessinsider.com%2Fimage%2F535930206bb3f7565e632c09%2Fthe-22-most-miserable-countries-in-the-world.jpg&cfs=1&l" alt="..." height="100">
+					    </a>
+					    <div class="media-body">
+					      <h4 class="media-heading">
+					      	<img src="static/images/guatemala.png" height="15"/> Free Tacos for everyone
+					      </h4>
+					      "voy a matar personas innocentes"
+					      <br/>
+					      <span class="label label-success">verdad!</span>
+					    </div>
+					    <hr/>
+					  </li>
+					</ul>
+					<ul class="pager">
+					  <li class="previous"><a href="#">&larr;</a></li>
+					  <li class="next"><a href="#">&rarr;</a></li>
+					</ul>
+				</div>
+			</div>
+    {% endblock %}

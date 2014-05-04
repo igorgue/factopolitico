@@ -92,7 +92,7 @@ def recent_facts(request):
     return render_to_response('recent_facts.html', locals(), context_instance=RequestContext(request))
 
 def categories(request):
-    categories = Category.all()
+    categories = Category.objects.all()
     return render_to_response('categories.html', locals(), context_instance=RequestContext(request))
 
 def get_category(request, slug):

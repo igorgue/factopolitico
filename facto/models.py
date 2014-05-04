@@ -75,8 +75,11 @@ class Category(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False, blank=False, null=False)
     updated_at = models.DateTimeField(auto_now_add=True, auto_now=True, blank=False, null=False)
 
+    def facts(self):
+        return Fact.objects.filter(category=self)
+
     def facts_count(self):
-        return Fact.objects.filter(category=self).count()
+        return self.facts().count()
 
     def facts_count_by_person(self, person):
         return Fact.objects.filter(category=self, person=person).count()
