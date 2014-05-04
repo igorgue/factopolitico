@@ -106,6 +106,12 @@ class Category(models.Model):
     def __unicode__(self):
         return self.title
 
+    def save(self, *args, **kwargs):
+        if self.slug == '':
+            self.slug = slugify(self.name)
+
+        super(Category, self).save(*args, **kwargs)
+
 class Fact(models.Model):
     STATUS = (
         ('investigating', 'Investigando'),
@@ -174,3 +180,9 @@ class Source(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if self.slug == '':
+            self.slug = slugify(self.name)
+
+        super(Source, self).save(*args, **kwargs)
