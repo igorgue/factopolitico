@@ -102,12 +102,14 @@ def save_bm_fact(request):
     person = get_object_or_404(Person, id=p_id)
     category = get_object_or_404(Category, id=c_id)
     response_data = {}
-    try:
-        Fact.objects.create(title='BMADD', quote=request.GET['quote'], person=person, category=category)
-    except:
-        response_data['status'] = 'error'
-    else:
-        response_data['status'] = 'ok'
+    f = Fact.objects.create(title='BMADD', quote=request.GET['quote'], person=person, category=category)
+    # try:
+        
+    #     # url=
+    # except:
+    #     response_data['status'] = 'error'
+    # else:
+    response_data['status'] = 'ok'
     return HttpResponse("%s(%s)" % (request.GET['callback'], json.dumps(response_data)), content_type="application/json")
 
 def show_bookmarklet(request):

@@ -1,3 +1,5 @@
+import random
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
@@ -164,7 +166,8 @@ class Fact(models.Model):
 
     def save(self, *args, **kwargs):
         if self.slug == '':
-            self.slug = slugify(self.title)
+            x = random.randint(1, 99999999999)
+            self.slug = slugify(u"%s" % self.title+' '+str(x))
 
         super(Fact, self).save(*args, **kwargs)
 
@@ -177,6 +180,7 @@ class Source(models.Model):
     title = models.CharField(max_length=255, blank=True)
 
     fact = models.ForeignKey(Fact, related_name='fact')
+    content = models.TextField(blank=True)
 
     slug = models.SlugField(max_length=255, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False, blank=False, null=False)
