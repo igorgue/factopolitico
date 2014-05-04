@@ -10,7 +10,7 @@ def home(request):
     facts_n = 3
 
     countries = Country.objects.all()
-    people = Person.objects.all()[:n]
+    people = Person.objects.all()
     recent_facts = Fact.recent_facts(facts_n)
     categories = Category.objects.all()[:n]
 

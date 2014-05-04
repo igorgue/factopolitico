@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^countries/(?P<slug>[\w-]+)/$', 'facto.views.get_country', name='get_country'),
     url(r'^countries/(?P<slug>[\w-]+)/facts/$', 'facto.views.country_fact_list', name='country_fact_list'),
 
-    url(r'^people/$', 'facto.views.people', name='people'),
+    #url(r'^people/$', 'facto.views.people', name='people'),
     url(r'^people/(?P<slug>[\w-]+)/$', 'facto.views.get_people', name='get_people'),
     url(r'^people/(?P<people_slug>[\w-]+)/facts/(?P<fact_slug>[\w-]+)/$', 'facto.views.get_fact', name='get_fact'),
 
