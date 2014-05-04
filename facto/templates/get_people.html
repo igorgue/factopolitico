@@ -217,53 +217,33 @@
 					<h2 class="oswald">Otros hechos</h2>
 					<hr/>
 					<ul class="media-list">
-					  <li class="media">
-					    <a class="pull-left" href="#">
-					      <img class="media-object" src="http://news.bbcimg.co.uk/media/images/74544000/jpg/_74544165_3778269e-bf30-4b52-92af-9237a0bdd9f3.jpg" alt="..." height="100" style="width:100px">
-					    </a>
-					    <div class="media-body">
-					      <h4 class="media-heading">
-					      	Guacamole is the best food for you
-					      </h4>
-					      "by the end of the year, we will be choking off and overcoming (...) inflation"
-					      <br/>
-					      <span class="label label-default">investigando</span>
-					    </div>
-					    <hr/>
-					  </li>
-					  <li class="media">
-					    <a class="pull-left" href="#">
-					      <img class="media-object" src="http://thecubaneconomy.com/wp-content/uploads/2012/06/cuba-computer.jpg" alt="..." height="100" style="width:100px">
-					    </a>
-					    <div class="media-body">
-					      <h4 class="media-heading">
-					      	Burritos are not real in mexico
-					      </h4>
-					      "los computadores son bueno"
-					      <br/>
-					      <span class="label label-success">verdad!</span>
-					    </div>
-					    <hr/>
-					  </li>
-					  <li class="media">
-					    <a class="pull-left" href="#">
-					      <img class="media-object" src="https://external-mia.xx.fbcdn.net/safe_image.php?d=AQDpjEQHDIiHqnLk&w=116&h=116&url=http%3A%2F%2Fstatic4.businessinsider.com%2Fimage%2F535930206bb3f7565e632c09%2Fthe-22-most-miserable-countries-in-the-world.jpg&cfs=1&l" alt="..." height="100">
-					    </a>
-					    <div class="media-body">
-					      <h4 class="media-heading">
-					      	Free Tacos for everyone
-					      </h4>
-					      "voy a matar personas innocentes"
-					      <br/>
-					      <span class="label label-success">verdad!</span>
-					    </div>
-					    <hr/>
-					  </li>
+            {% for fact in more_facts.object_list %}
+              <li class="media">
+                <a class="pull-left" href="{% url "get_fact" person.slug fact.slug %}">
+                  <img class="media-object" src="{{ fact.image_url }}" alt="..." height="100" style="width:100px">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">
+                    {{ fact.title }}
+                  </h4>
+                  "{{ fact.quote}}"
+                  <br/>
+                  <span class="label label-{{ fact.status_css_class }}">{{ fact.get_status_display }}</span>
+                </div>
+                <hr/>
+              </li>
+            {% endfor %}
 					</ul>
-					<ul class="pager">
-					  <li class="previous"><a href="#">&larr;</a></li>
-					  <li class="next"><a href="#">&rarr;</a></li>
-					</ul>
+          {% if more_facts.has_other_pages %}
+            <ul class="pager">
+              {% if more_facts.has_previous %}
+                <li class="previous"><a href="{{ request.get_full_path }}?page={{ more_facts.previous_page_number }}">&larr;</a></li>
+              {% endif %}
+              {% if more_facts.has_next %}
+                <li class="next"><a href="{{ request.get_full_path }}?page={{ more_facts.next_page_number }}">&rarr;</a></li>
+              {% endif %}
+            </ul>
+          {% endif %}
 				</div>
 			</div>
     {% endblock %}

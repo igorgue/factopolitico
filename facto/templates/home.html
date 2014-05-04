@@ -200,7 +200,7 @@
                 </h4>
                 "{{ fact.quote }}"
                 <br/>
-                <span class="label label-default">{{ fact.get_status_display }}</span>
+                <span class="label label-{{ fact.status_css_class }}">{{ fact.get_status_display }}</span>
               </div>
             </li>
           {% endfor %}

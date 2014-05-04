@@ -31,6 +31,9 @@ class Person(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False, blank=False, null=False)
     updated_at = models.DateTimeField(auto_now_add=True, auto_now=True, blank=False, null=False)
 
+    def more_facts_in_profile(self):
+        return Fact.objects.filter(person=self).order_by('-created_at')[1:]
+
     def lastest_fact(self):
         return Fact.objects.filter(person=self).order_by('-created_at')[0]
 

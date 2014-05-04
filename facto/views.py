@@ -68,6 +68,19 @@ def people(request):
 
 def get_people(request, slug):
     person = get_object_or_404(Person, slug=slug)
+    more_facts_list = person.more_facts_in_profile()
+
+    paginator = Paginator(more_facts_list, 3)
+
+    page = request.GET.get('page')
+
+    try:
+        more_facts = paginator.page(page)
+    except PageNotAnInteger:
+        more_facts = paginator.page(1)
+    except EmptyPage:
+        more_facts = paginator.page(paginator.num_pages)
+
     return render_to_response('get_people.html', locals(), context_instance=RequestContext(request))
 
 def get_fact(request, people_slug, fact_slug):
